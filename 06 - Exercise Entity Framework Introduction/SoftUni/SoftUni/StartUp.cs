@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using SoftUni.Models;
 
 namespace SoftUni
 {
@@ -13,7 +14,7 @@ namespace SoftUni
         static void Main(string[] args)
         {
            var context = new SoftUniContext();
-            Console.WriteLine(GetEmployeesFromResearchAndDevelopment(context));
+            Console.WriteLine(AddNewAddressToEmployee(context));
         }
 
         //03.
@@ -88,5 +89,44 @@ namespace SoftUni
 
             return sb.ToString().TrimEnd();
         }
+
+
+        //06.
+        public static string AddNewAddressToEmployee(SoftUniContext context)
+        {
+            Address newAdress = new Address()
+            {
+                AddressText = "Vitoshka 15",
+                TownId = 4
+            };
+
+            var nakov = context.Employees
+                .FirstOrDefault(e => e.LastName == "Nakov");
+
+            if (nakov != null) 
+            {
+                nakov.Address = newAdress;
+                context.SaveChanges();
+            }
+
+            var employees = context.Employees
+                .Select(e => new
+                {
+                    e.Address.AddressText,
+                    e.AddressId
+                })
+                .OrderByDescending(e => e.AddressId)
+                .Take(10);
+
+            var sb = new StringBuilder();
+            foreach (var e in employees) 
+            {
+                sb.AppendLine(e.AddressText);
+            }
+
+            return sb.ToString().TrimEnd();
+        }
     }
+
+    
 }
