@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SoftUni.Models;
 using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
+using System.Diagnostics.Metrics;
 
 namespace SoftUni
 {
@@ -14,8 +15,8 @@ namespace SoftUni
     {
         static void Main(string[] args)
         {
-           var context = new SoftUniContext();
-            Console.WriteLine(GetEmployeesInPeriod(context));
+            var context = new SoftUniContext();
+            Console.WriteLine(GetAddressesByTown(context));
         }
 
         //03.
@@ -23,18 +24,18 @@ namespace SoftUni
         {
             var employees = context.Employees
                 .Select(e => new
-                 {
+                {
                     e.FirstName,
                     e.LastName,
                     e.MiddleName,
                     e.JobTitle,
                     e.Salary
-                 })
+                })
                 .ToList();
 
             var sb = new StringBuilder();
 
-            foreach (var e in employees) 
+            foreach (var e in employees)
             {
                 sb.AppendLine($"{e.FirstName} {e.LastName} {e.MiddleName} {e.JobTitle} {e.Salary:f2}");
             }
@@ -55,7 +56,7 @@ namespace SoftUni
                 })
                 .OrderBy(e => e.FirstName);
 
-              var sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             foreach (var e in richEmployee)
             {
@@ -104,7 +105,7 @@ namespace SoftUni
             var nakov = context.Employees
                 .FirstOrDefault(e => e.LastName == "Nakov");
 
-            if (nakov != null) 
+            if (nakov != null)
             {
                 nakov.Address = newAdress;
                 context.SaveChanges();
@@ -120,7 +121,7 @@ namespace SoftUni
                 .Take(10);
 
             var sb = new StringBuilder();
-            foreach (var e in employees) 
+            foreach (var e in employees)
             {
                 sb.AppendLine(e.AddressText);
             }
@@ -135,16 +136,16 @@ namespace SoftUni
             var employees = context.Employees
                 .Select(e => new
                 {
-                    EmpName = $"{ e.FirstName + " " + e.LastName}",
+                    EmpName = $"{e.FirstName + " " + e.LastName}",
                     ManagerName = $"{e.Manager.FirstName + " " + e.Manager.LastName}",
                     Projects = e.EmployeesProjects
                         .Where(ep => ep.Project.StartDate.Year >= 2001
                                       && ep.Project.StartDate.Year <= 2003)
-                        .Select(ep => new 
+                        .Select(ep => new
                         {
-                             ProjectName = ep.Project.Name,
-                                           ep.Project.StartDate,
-                                           EndDate =  ep.Project.EndDate.HasValue ?
+                            ProjectName = ep.Project.Name,
+                            ep.Project.StartDate,
+                            EndDate = ep.Project.EndDate.HasValue ?
                                                       ep.Project.EndDate.Value.ToString("M/d/yyyy h:mm:ss tt") :
                                                       "not finished"
                         })
@@ -159,17 +160,43 @@ namespace SoftUni
             {
                 sb.AppendLine($"{e.EmpName} - Manager: {e.ManagerName}");
                 foreach (var p in e.Projects)
-                { 
+                {
                     sb.AppendLine($"--{p.ProjectName} - {p.StartDate:M/d/yyyy h:mm:ss tt} - {p.EndDate}");
-                
+
                 }
             }
             return sb.ToString().TrimEnd();
 
-        
+
+        }
+
+        //08.
+        public static string GetAddressesByTown(SoftUniContext context)
+        { 
+            var addresses = context.Addresses
+                .OrderByDescending(a => a.Employees.Count())
+                .ThenBy(a => a.Town.Name)
+                .ThenBy(a => a.AddressText)
+                .Take(10)
+                .Select(a => new
+                {
+                    a.AddressText,
+                    TownName = a.Town.Name,
+                    CountEmp = a.Employees.Count()
+                })
+                .ToList();
+
+
+            var sb = new StringBuilder();
+
+            foreach (var a in addresses)
+            {
+                sb.AppendLine($"{a.AddressText}, {a.TownName} - {a.CountEmp} employees");
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
     }
 
-    
 }
