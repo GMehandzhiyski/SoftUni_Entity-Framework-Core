@@ -58,8 +58,7 @@
               "RelativeToolTip": "SoftUni\\Models\\EmployeeProject.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-22T06:08:13.938Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-22T06:08:13.938Z"
             },
             {
               "$type": "Document",
@@ -71,8 +70,7 @@
               "RelativeToolTip": "SoftUni\\Models\\Town.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-22T05:55:13.318Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-22T05:55:13.318Z"
             },
             {
               "$type": "Document",
@@ -84,8 +82,7 @@
               "RelativeToolTip": "SoftUni\\Models\\Project.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAmwBkAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-22T05:55:10.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-22T05:55:10.393Z"
             },
             {
               "$type": "Document",
@@ -97,8 +94,7 @@
               "RelativeToolTip": "SoftUni\\Models\\Employee.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAD0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-22T05:55:05.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-22T05:55:05.925Z"
             },
             {
               "$type": "Document",
@@ -110,8 +106,7 @@
               "RelativeToolTip": "SoftUni\\Models\\Department.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-22T05:55:00.103Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-22T05:55:00.103Z"
             },
             {
               "$type": "Document",
@@ -123,8 +118,7 @@
               "RelativeToolTip": "SoftUni\\Models\\Address.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-22T05:54:43.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-22T05:54:43.646Z"
             },
             {
               "$type": "Document",
@@ -134,7 +128,7 @@
               "RelativeDocumentMoniker": "SoftUni\\Data\\SoftUniContext.cs",
               "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\Data\\SoftUniContext.cs",
               "RelativeToolTip": "SoftUni\\Data\\SoftUniContext.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAgwBgAAAAAAAAA",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAYwBgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-22T05:50:43.347Z",
               "EditorCaption": ""
@@ -147,7 +141,7 @@
               "RelativeDocumentMoniker": "SoftUni\\StartUp.cs",
               "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\StartUp.cs",
               "RelativeToolTip": "SoftUni\\StartUp.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAOAAAA",
+              "ViewState": "AQIAABMAAAAAAAAAAAA3wB4AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-22T05:47:41.472Z",
               "EditorCaption": ""
