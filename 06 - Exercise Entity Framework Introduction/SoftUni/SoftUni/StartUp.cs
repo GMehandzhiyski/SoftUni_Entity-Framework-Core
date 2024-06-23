@@ -16,7 +16,7 @@ namespace SoftUni
         static void Main(string[] args)
         {
             var context = new SoftUniContext();
-            Console.WriteLine(GetAddressesByTown(context));
+            Console.WriteLine(GetEmployee147(context));
         }
 
         //03.
@@ -114,7 +114,7 @@ namespace SoftUni
             var employees = context.Employees
                 .Select(e => new
                 {
-                    e.Address.AddressText,
+                    e.Address!.AddressText,
                     e.AddressId
                 })
                 .OrderByDescending(e => e.AddressId)
@@ -137,7 +137,7 @@ namespace SoftUni
                 .Select(e => new
                 {
                     EmpName = $"{e.FirstName + " " + e.LastName}",
-                    ManagerName = $"{e.Manager.FirstName + " " + e.Manager.LastName}",
+                    ManagerName = $"{e.Manager!.FirstName + " " + e.Manager.LastName}",
                     Projects = e.EmployeesProjects
                         .Where(ep => ep.Project.StartDate.Year >= 2001
                                       && ep.Project.StartDate.Year <= 2003)
@@ -175,13 +175,13 @@ namespace SoftUni
         { 
             var addresses = context.Addresses
                 .OrderByDescending(a => a.Employees.Count())
-                .ThenBy(a => a.Town.Name)
+                .ThenBy(a => a.Town!.Name)
                 .ThenBy(a => a.AddressText)
                 .Take(10)
                 .Select(a => new
                 {
                     a.AddressText,
-                    TownName = a.Town.Name,
+                    TownName = a.Town!.Name,
                     CountEmp = a.Employees.Count()
                 })
                 .ToList();
@@ -197,6 +197,37 @@ namespace SoftUni
             return sb.ToString().TrimEnd();
         }
 
+
+        //09.
+        public static string GetEmployee147(SoftUniContext context)
+        {
+            var employees147 = context.Employees
+                .Where(e => e.EmployeeId == 147)
+                .Select(e => new
+                {
+                    e.FirstName,
+                    e.LastName,
+                    e.JobTitle,
+                    CurrProject = e.EmployeesProjects
+                                 .Select(ep => ep.Project.Name)
+                                 .OrderBy(p => p)
+                                 .ToList()
+                })
+                .FirstOrDefault();
+
+            var sb = new StringBuilder();
+           if (employees147 != null)
+            {
+                sb.AppendLine($"{employees147.FirstName} {employees147.LastName} - {employees147.JobTitle}");
+                foreach (var cp in employees147.CurrProject)
+                {
+                    sb.AppendLine(cp);
+                }
+
+            }
+
+            return sb.ToString().TrimEnd();
+        }
     }
 
 }

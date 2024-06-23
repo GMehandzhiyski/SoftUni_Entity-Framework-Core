@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|solutionrelative:softuni\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|c:\\softuni_entity-framework-core\\06 - exercise entity framework introduction\\softuni\\softuni\\models\\employeeproject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|solutionrelative:softuni\\models\\employeeproject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|c:\\softuni_entity-framework-core\\06 - exercise entity framework introduction\\softuni\\softuni\\data\\softunicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|solutionrelative:softuni\\data\\softunicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|c:\\softuni_entity-framework-core\\06 - exercise entity framework introduction\\softuni\\softuni\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|solutionrelative:softuni\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,16 +27,8 @@
       "RelativeMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|solutionrelative:softuni\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|c:\\softuni_entity-framework-core\\06 - exercise entity framework introduction\\softuni\\softuni\\data\\softunicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|solutionrelative:softuni\\data\\softunicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|c:\\softuni_entity-framework-core\\06 - exercise entity framework introduction\\softuni\\softuni\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|solutionrelative:softuni\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|c:\\softuni_entity-framework-core\\06 - exercise entity framework introduction\\softuni\\softuni\\models\\employeeproject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|solutionrelative:softuni\\models\\employeeproject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{883A20B9-8C15-4968-B083-BD981583D426}|SoftUni\\SoftUni.csproj|c:\\softuni_entity-framework-core\\06 - exercise entity framework introduction\\softuni\\softuni\\models\\town.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,15 +50,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "EmployeeProject.cs",
               "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\Models\\EmployeeProject.cs",
               "RelativeDocumentMoniker": "SoftUni\\Models\\EmployeeProject.cs",
               "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\Models\\EmployeeProject.cs",
               "RelativeToolTip": "SoftUni\\Models\\EmployeeProject.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAUAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-22T06:08:13.938Z"
+              "WhenOpened": "2024-06-22T06:08:13.938Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -74,7 +75,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Project.cs",
               "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\Models\\Project.cs",
               "RelativeDocumentMoniker": "SoftUni\\Models\\Project.cs",
@@ -86,7 +87,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Employee.cs",
               "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\Models\\Employee.cs",
               "RelativeDocumentMoniker": "SoftUni\\Models\\Employee.cs",
@@ -98,7 +99,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Department.cs",
               "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\Models\\Department.cs",
               "RelativeDocumentMoniker": "SoftUni\\Models\\Department.cs",
@@ -110,7 +111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Address.cs",
               "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\Models\\Address.cs",
               "RelativeDocumentMoniker": "SoftUni\\Models\\Address.cs",
@@ -122,15 +123,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "SoftUniContext.cs",
               "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\Data\\SoftUniContext.cs",
               "RelativeDocumentMoniker": "SoftUni\\Data\\SoftUniContext.cs",
               "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\Data\\SoftUniContext.cs",
               "RelativeToolTip": "SoftUni\\Data\\SoftUniContext.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAYwBgAAAAAAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAArwCEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-22T05:50:43.347Z"
+              "WhenOpened": "2024-06-22T05:50:43.347Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -140,7 +142,7 @@
               "RelativeDocumentMoniker": "SoftUni\\StartUp.cs",
               "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\06 - Exercise Entity Framework Introduction\\SoftUni\\SoftUni\\StartUp.cs",
               "RelativeToolTip": "SoftUni\\StartUp.cs",
-              "ViewState": "AQIAAKYAAAAAAAAAAAAqwK4AAAAKAAAA",
+              "ViewState": "AQIAAMYAAAAAAAAAAAAjwNgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-22T05:47:41.472Z",
               "EditorCaption": ""
