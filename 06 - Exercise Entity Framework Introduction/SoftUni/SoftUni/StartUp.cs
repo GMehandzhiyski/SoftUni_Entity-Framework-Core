@@ -16,7 +16,7 @@ namespace SoftUni
         static void Main(string[] args)
         {
             var context = new SoftUniContext();
-            Console.WriteLine(GetEmployee147(context));
+            Console.WriteLine(GetDepartmentsWithMoreThan5Employees(context));
         }
 
         //03.
@@ -30,6 +30,7 @@ namespace SoftUni
                     e.MiddleName,
                     e.JobTitle,
                     e.Salary
+                    
                 })
                 .ToList();
 
@@ -172,7 +173,7 @@ namespace SoftUni
 
         //08.
         public static string GetAddressesByTown(SoftUniContext context)
-        { 
+        {
             var addresses = context.Addresses
                 .OrderByDescending(a => a.Employees.Count())
                 .ThenBy(a => a.Town!.Name)
@@ -216,7 +217,7 @@ namespace SoftUni
                 .FirstOrDefault();
 
             var sb = new StringBuilder();
-           if (employees147 != null)
+            if (employees147 != null)
             {
                 sb.AppendLine($"{employees147.FirstName} {employees147.LastName} - {employees147.JobTitle}");
                 foreach (var cp in employees147.CurrProject)
@@ -228,6 +229,45 @@ namespace SoftUni
 
             return sb.ToString().TrimEnd();
         }
-    }
 
+        //10.
+        public static string GetDepartmentsWithMoreThan5Employees(SoftUniContext context)
+        {
+            var depart = context.Departments
+                .Where(d => d.Employees.Count() > 5)
+                .OrderBy(d => d)
+                .ThenBy(d => d.Name)
+                .Select(d => new
+                {
+                    d.Name,
+                    d.Manager.FirstName,
+                    d.Manager.LastName,
+                    TeamDepart = d.Employees
+                                .Select(e => new
+                                {
+                                    e.FirstName,
+                                    e.LastName,
+                                    e.JobTitle,
+                                })
+                                .OrderBy(e => e.FirstName)
+                                .ThenBy(e => e.LastName)
+                                .ToList()
+                })
+                .ToList();
+
+            var sb = new StringBuilder();
+            foreach (var d in depart)
+            {
+                sb.AppendLine($"{d.Name} - {d.FirstName} {d.LastName}");
+                foreach (var e in d.TeamDepart)
+                { 
+                    sb.AppendLine($"{e.FirstName} {e.LastName} - {e.JobTitle}");
+                }
+
+            }
+            return sb.ToString().TrimEnd();
+
+        }
+
+    }
 }
