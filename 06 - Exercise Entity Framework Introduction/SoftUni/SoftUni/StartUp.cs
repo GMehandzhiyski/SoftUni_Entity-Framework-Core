@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SoftUni.Models;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 
 namespace SoftUni
 {
@@ -14,7 +15,7 @@ namespace SoftUni
         static void Main(string[] args)
         {
            var context = new SoftUniContext();
-            Console.WriteLine(AddNewAddressToEmployee(context));
+            Console.WriteLine(GetEmployeesInPeriod(context));
         }
 
         //03.
@@ -126,6 +127,48 @@ namespace SoftUni
 
             return sb.ToString().TrimEnd();
         }
+
+        //07.
+
+        public static string GetEmployeesInPeriod(SoftUniContext context)
+        {
+            var employees = context.Employees
+                .Select(e => new
+                {
+                    EmpName = $"{ e.FirstName + " " + e.LastName}",
+                    ManagerName = $"{e.Manager.FirstName + " " + e.Manager.LastName}",
+                    Projects = e.EmployeesProjects
+                        .Where(ep => ep.Project.StartDate.Year >= 2001
+                                      && ep.Project.StartDate.Year <= 2003)
+                        .Select(ep => new 
+                        {
+                             ProjectName = ep.Project.Name,
+                                           ep.Project.StartDate,
+                                           EndDate =  ep.Project.EndDate.HasValue ?
+                                                      ep.Project.EndDate.Value.ToString("M/d/yyyy h:mm:ss tt") :
+                                                      "not finished"
+                        })
+
+                })
+                .Take(10)
+                .ToList();
+
+            var sb = new StringBuilder();
+
+            foreach (var e in employees)
+            {
+                sb.AppendLine($"{e.EmpName} - Manager: {e.ManagerName}");
+                foreach (var p in e.Projects)
+                { 
+                    sb.AppendLine($"--{p.ProjectName} - {p.StartDate:M/d/yyyy h:mm:ss tt} - {p.EndDate}");
+                
+                }
+            }
+            return sb.ToString().TrimEnd();
+
+        
+        }
+
     }
 
     
