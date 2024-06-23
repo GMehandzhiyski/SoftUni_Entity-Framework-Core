@@ -16,7 +16,7 @@ namespace SoftUni
         static void Main(string[] args)
         {
             var context = new SoftUniContext();
-            Console.WriteLine(GetDepartmentsWithMoreThan5Employees(context));
+            Console.WriteLine(IncreaseSalaries(context));
         }
 
         //03.
@@ -269,5 +269,71 @@ namespace SoftUni
 
         }
 
+        //11.
+        public static string GetLatestProjects(SoftUniContext context)
+        {
+            var project = context.Projects
+                .OrderByDescending(p => p.StartDate)
+                .Take(10)
+                .OrderBy(p => p.Name)
+                .Select(p => new
+                {
+                    p.Name,
+                    p.Description,
+                    p.StartDate
+                });
+
+            var sb = new StringBuilder();
+
+            foreach (var p in project)
+            {
+                sb.AppendLine(p.Name);
+                sb.AppendLine(p.Description);
+                sb.AppendLine($"{p.StartDate:M/d/yyyy h:mm:ss tt}");
+            }
+
+
+            return sb.ToString().TrimEnd();
+        }
+
+        //12.
+        public static string IncreaseSalaries(SoftUniContext context)
+        {
+            List<string> deptIncSalary = new List<string>
+            {
+                  "Engineering",
+                  "Tool Design",
+                  "Marketing",
+                  "Information Services"
+            };
+
+            var employees = context.Employees
+                .Where(e => deptIncSalary.Contains(e.Department.Name))
+                .ToList();
+            foreach (var e in employees)
+            {
+                e.Salary = e.Salary * 1.12m;
+            }
+            context.SaveChanges();
+
+            var finalEmployees = employees
+                .Select(e => new
+                {
+                    e.FirstName,
+                    e.LastName,
+                    e.Salary
+                })
+                .OrderBy(e => e.FirstName)
+                .ThenBy(e => e.LastName)
+                .ToList();
+
+            var sb = new StringBuilder();
+
+            foreach (var e in finalEmployees)
+            {
+                sb.AppendLine($"{e.FirstName} {e.LastName} (${e.Salary:f2})");
+            }
+            return sb.ToString().TrimEnd();
+        }
     }
 }
