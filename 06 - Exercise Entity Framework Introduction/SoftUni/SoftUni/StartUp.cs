@@ -1,13 +1,8 @@
-﻿using SoftUni.Data;
-using System;
-using System.Linq;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using SoftUni.Data;
 using SoftUni.Models;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
-using System.Diagnostics.Metrics;
+using System.Text;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SoftUni
 {
@@ -16,7 +11,7 @@ namespace SoftUni
         static void Main(string[] args)
         {
             var context = new SoftUniContext();
-            Console.WriteLine(DeleteProjectById(context));
+            Console.WriteLine(RemoveTown(context));
         }
 
         //03.
@@ -30,13 +25,15 @@ namespace SoftUni
                     e.MiddleName,
                     e.JobTitle,
                     e.Salary
-                    
-                })
-                .ToList();
+
+                });
+              
+
+            var queryResult = employees.ToList();
 
             var sb = new StringBuilder();
 
-            foreach (var e in employees)
+            foreach (var e in queryResult)
             {
                 sb.AppendLine($"{e.FirstName} {e.LastName} {e.MiddleName} {e.JobTitle} {e.Salary:f2}");
             }
@@ -202,8 +199,9 @@ namespace SoftUni
         //09.
         public static string GetEmployee147(SoftUniContext context)
         {
+            var currEmployee = 147;
             var employees147 = context.Employees
-                .Where(e => e.EmployeeId == 147)
+                .Where(e => e.EmployeeId == currEmployee)
                 .Select(e => new
                 {
                     e.FirstName,
@@ -260,7 +258,7 @@ namespace SoftUni
             {
                 sb.AppendLine($"{d.Name} - {d.FirstName} {d.LastName}");
                 foreach (var e in d.TeamDepart)
-                { 
+                {
                     sb.AppendLine($"{e.FirstName} {e.LastName} - {e.JobTitle}");
                 }
 
@@ -342,7 +340,7 @@ namespace SoftUni
         {
             var employees = context.Employees
                 .Where(e => e.FirstName.ToLower().StartsWith("sa"))
-                .Select(e => new 
+                .Select(e => new
                 {
                     e.FirstName,
                     e.LastName,
@@ -382,15 +380,65 @@ namespace SoftUni
                 .Select(p => new
                 {
                     p.Name
-                })
-                .ToList();
+                });
+
+       
+
+            var quaryResult = currProject.ToList();
 
             var sb = new StringBuilder();
-            foreach (var cp in currProject) 
+
+            PrintSQLQuery(currProject);
+
+            foreach (var cp in quaryResult)
             {
                 sb.AppendLine(cp.Name);
             }
             return sb.ToString().TrimEnd();
         }
+
+        //15. 
+        public static string RemoveTown(SoftUniContext context)
+        {
+            var townToDelete = "Seattle";
+
+            var changeAdressToEmployee = context.Employees
+                .Where(e => e.Address.Town.Name == townToDelete)
+                .Select(ep => ep)
+                .ToList();
+
+            foreach (var cp in changeAdressToEmployee)
+            {
+                cp.AddressId = null;
+            }
+
+            var AdressDelete = context.Addresses
+             .Where(e => e.Town.Name == townToDelete)
+             .Select(ep => ep);
+
+            var removeAddressDeleteCount = AdressDelete.Count();
+
+            context.Addresses.RemoveRange(AdressDelete);
+
+            var deleteTown = context.Towns
+                .FirstOrDefault(t => t.Name == townToDelete);
+
+            context.Towns.Remove(deleteTown);
+
+            context.SaveChanges();
+
+            return $"{removeAddressDeleteCount} addresses in Seattle were deleted";
+        }
+
+        public static IQueryable PrintSQLQuery(IQueryable query)
+        {
+            var sql = query.ToQueryString();
+            Console.WriteLine(sql); // Или използвайте предпочитания от вас метод за логване
+            Console.WriteLine();
+            return query;
+        }
+
     }
+
+
 }
