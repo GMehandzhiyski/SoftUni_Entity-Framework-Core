@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|c:\\softuni_entity-framework-core\\08 - exercise entity relations\\p01_studentsystem\\p01_studentsystem\\data\\models\\homeworks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|solutionrelative:p01_studentsystem\\data\\models\\homeworks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|c:\\softuni_entity-framework-core\\08 - exercise entity relations\\p01_studentsystem\\p01_studentsystem\\data\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|solutionrelative:p01_studentsystem\\data\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|c:\\softuni_entity-framework-core\\08 - exercise entity relations\\p01_studentsystem\\p01_studentsystem\\data\\models\\resource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|solutionrelative:p01_studentsystem\\data\\models\\resource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|c:\\softuni_entity-framework-core\\08 - exercise entity relations\\p01_studentsystem\\p01_studentsystem\\data\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|solutionrelative:p01_studentsystem\\data\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|c:\\softuni_entity-framework-core\\08 - exercise entity relations\\p01_studentsystem\\p01_studentsystem\\data\\studentsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|solutionrelative:p01_studentsystem\\data\\studentsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|c:\\softuni_entity-framework-core\\08 - exercise entity relations\\p01_studentsystem\\p01_studentsystem\\p01_studentsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|solutionrelative:p01_studentsystem\\p01_studentsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|c:\\softuni_entity-framework-core\\08 - exercise entity relations\\p01_studentsystem\\p01_studentsystem\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|solutionrelative:p01_studentsystem\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Homeworks.cs",
+              "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\Models\\Homeworks.cs",
+              "RelativeDocumentMoniker": "P01_StudentSystem\\Data\\Models\\Homeworks.cs",
+              "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\Models\\Homeworks.cs",
+              "RelativeToolTip": "P01_StudentSystem\\Data\\Models\\Homeworks.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-27T18:22:48.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Resource.cs",
+              "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\Models\\Resource.cs",
+              "RelativeDocumentMoniker": "P01_StudentSystem\\Data\\Models\\Resource.cs",
+              "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\Models\\Resource.cs",
+              "RelativeToolTip": "P01_StudentSystem\\Data\\Models\\Resource.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAIAwwCAAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-27T18:10:14.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\Models\\Course.cs",
+              "RelativeDocumentMoniker": "P01_StudentSystem\\Data\\Models\\Course.cs",
+              "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\Models\\Course.cs",
+              "RelativeToolTip": "P01_StudentSystem\\Data\\Models\\Course.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAgwBwAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-27T18:01:41.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "P01_StudentSystem\\Data\\Models\\Student.cs",
+              "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\Models\\Student.cs",
+              "RelativeToolTip": "P01_StudentSystem\\Data\\Models\\Student.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAswBoAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-27T17:51:45.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "P01_StudentSystem",
+              "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\P01_StudentSystem.csproj",
+              "RelativeDocumentMoniker": "P01_StudentSystem\\P01_StudentSystem.csproj",
+              "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\P01_StudentSystem.csproj",
+              "RelativeToolTip": "P01_StudentSystem\\P01_StudentSystem.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-27T17:42:18.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StudentSystemContext.cs",
+              "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\StudentSystemContext.cs",
+              "RelativeDocumentMoniker": "P01_StudentSystem\\Data\\StudentSystemContext.cs",
+              "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\StudentSystemContext.cs",
+              "RelativeToolTip": "P01_StudentSystem\\Data\\StudentSystemContext.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-27T17:42:03.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StartUp.cs",
+              "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\StartUp.cs",
+              "RelativeDocumentMoniker": "P01_StudentSystem\\StartUp.cs",
+              "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\StartUp.cs",
+              "RelativeToolTip": "P01_StudentSystem\\StartUp.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-27T17:39:37.604Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
