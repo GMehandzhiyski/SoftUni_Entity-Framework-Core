@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace P01_StudentSystem.Data.Models
 {
@@ -28,6 +23,9 @@ namespace P01_StudentSystem.Data.Models
 
         public DateTime Birthday { get; set; }
 
+        public virtual ICollection<Homework> Homeworks { get; set; } = null!;
+
+        public virtual ICollection<StudentCourse> StudentsCourses {  get; set; } = null!;   
 
 
 
