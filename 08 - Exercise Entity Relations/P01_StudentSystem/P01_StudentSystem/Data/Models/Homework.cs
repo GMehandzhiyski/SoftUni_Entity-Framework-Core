@@ -9,7 +9,6 @@ namespace P01_StudentSystem.Data.Models
         [Key]
         public int HomeworkId { get; set; }
 
-        [MaxLength(280)]
         public string Content { get; set; } = null!;
 
         public ContentType ContentType { get; set; }
@@ -29,8 +28,8 @@ namespace P01_StudentSystem.Data.Models
 
     public enum ContentType
     { 
-        Application,
-        Pdf,
-        Zip
+        Application = 0,
+        Pdf = 1,
+        Zip = 2
     }
 }

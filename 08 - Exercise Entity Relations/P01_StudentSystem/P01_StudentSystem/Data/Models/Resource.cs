@@ -10,15 +10,9 @@ namespace P01_StudentSystem.Data.Models
         [Key]
         public int ResourceId { get; set; }
 
-        [Required]
         [MaxLength(50)]
-        [Unicode]
         public string Name { get; set; } = null!;
-
-        [Required]
-        [MaxLength(50)]
-        public string Url { get; set; }
-
+        public string? Url { get; set; }
         public ResourceType ResourceType { get; set; }
 
         public int CourseId { get; set; }
@@ -31,10 +25,10 @@ namespace P01_StudentSystem.Data.Models
 
     public enum ResourceType
     {
-        Video,
-        Presentation,
-        Document,
-        Other
+        Video = 0,
+        Presentation = 1,
+        Document = 2,
+        Other = 3,
     }
 
 }
