@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "P02_FootballBetting.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/P02_FootballBetting.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/P02_FootballBetting.Common.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "P02_FootballBetting.Common/1.0.0": {
+      "type": "project",
+      "path": "../P02_FootballBetting.Common/P02_FootballBetting.Common.csproj",
+      "msbuildProject": "../P02_FootballBetting.Common/P02_FootballBetting.Common.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "P02_FootballBetting.Common >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\user\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P02_FootballBetting\\P02_FootballBetting.Common\\P02_FootballBetting.Common.csproj": {
+              "projectPath": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P02_FootballBetting\\P02_FootballBetting.Common\\P02_FootballBetting.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

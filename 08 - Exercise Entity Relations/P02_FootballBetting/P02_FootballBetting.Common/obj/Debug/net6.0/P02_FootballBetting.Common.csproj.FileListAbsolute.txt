@@ -1,0 +1,12 @@
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\bin\Debug\net6.0\P02_FootballBetting.Common.deps.json
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\bin\Debug\net6.0\P02_FootballBetting.Common.dll
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\bin\Debug\net6.0\P02_FootballBetting.Common.pdb
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\obj\Debug\net6.0\P02_FootballBetting.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\obj\Debug\net6.0\P02_FootballBetting.Common.AssemblyInfoInputs.cache
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\obj\Debug\net6.0\P02_FootballBetting.Common.AssemblyInfo.cs
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\obj\Debug\net6.0\P02_FootballBetting.Common.csproj.CoreCompileInputs.cache
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\obj\Debug\net6.0\P02_FootballBetting.Common.sourcelink.json
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\obj\Debug\net6.0\P02_FootballBetting.Common.dll
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\obj\Debug\net6.0\refint\P02_FootballBetting.Common.dll
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\obj\Debug\net6.0\P02_FootballBetting.Common.pdb
+C:\SoftUni_Entity-Framework-Core\08 - Exercise Entity Relations\P02_FootballBetting\P02_FootballBetting.Common\obj\Debug\net6.0\ref\P02_FootballBetting.Common.dll
