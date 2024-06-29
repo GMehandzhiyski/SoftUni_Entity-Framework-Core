@@ -14,8 +14,9 @@ namespace P02_FootballBettingSystems.Models
     {
         public Team() 
         {
-            Games = new HashSet<Game>();
-            Players = new HashSet<Player>();
+            this.HomeGames = new HashSet<Game>();
+            this.AwayGames = new HashSet<Game>();
+            this.Players = new HashSet<Player>();
         }
 
         [Key]
@@ -37,17 +38,19 @@ namespace P02_FootballBettingSystems.Models
 
         public int PrimaryKitColorId { get; set; }
         [ForeignKey(nameof(PrimaryKitColorId))]
-        //public Color Color { get; set; }    
+       public Color PrimaryKitColor { get; set; }    
 
         public int SecondaryKitColorId { get; set; }
         [ForeignKey(nameof(SecondaryKitColorId))]
-        public System.Drawing.Color Color { get; set; }
+        public Color SecondaryKitColor { get; set; }
 
         public int TownId { get; set; }
         [ForeignKey(nameof(TownId))]
         public Town Town { get; set; }
 
-        public virtual ICollection<Game> Games { get; set; } = null!;
+        
+        public virtual ICollection<Game> HomeGames { get; set; } = null!;
+        public virtual ICollection<Game> AwayGames { get; set; } = null!;
         public virtual ICollection<Player> Players { get; set; } = null!;
 
 

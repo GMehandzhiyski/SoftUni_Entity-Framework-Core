@@ -16,5 +16,9 @@ namespace P02_FootballBetting.Common
         public const int InitialMaxLenght = 3;
         public const int PositionNameMaxLenght = 15;
         public const int PlayerNameMaxLenght = 30;
+        public const int ColorNameMaxLenght = 15;
+        public const int GameReusltMaxLenght = 25;
+        public const int UserPasswordMaxLenght = 25;
+        public const int NameMaxLenght = 25;
     }
 }

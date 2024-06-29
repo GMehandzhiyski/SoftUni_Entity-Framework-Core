@@ -16,7 +16,7 @@ namespace P02_FootballBettingSystems.Models
 
         public decimal Amount { get; set; }
 
-        public int Prediction { get; set; }
+        public string Prediction { get; set; }
 
         public DateTime DateTime { get; set; }
 

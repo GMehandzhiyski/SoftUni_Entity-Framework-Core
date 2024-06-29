@@ -23,8 +23,7 @@ namespace P02_FootballBettingSystems.Models
         [MaxLength(ValidationConstants.PlayerNameMaxLenght)]
         public string? Name { get; set; }
 
-        [Required]
-        public int SquadNumber { get; set; }
+        public byte SquadNumber { get; set; }
 
         public int TownId { get; set; }
         [ForeignKey(nameof(TownId))]

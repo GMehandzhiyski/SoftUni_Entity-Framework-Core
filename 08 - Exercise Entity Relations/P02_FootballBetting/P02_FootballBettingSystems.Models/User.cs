@@ -1,10 +1,6 @@
 ﻿using P02_FootballBetting.Common;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace P02_FootballBettingSystems.Models
 {
@@ -23,10 +19,12 @@ namespace P02_FootballBettingSystems.Models
         public string? Username { get; set; }
 
         [Required]
+        [MaxLength(ValidationConstants.UserPasswordMaxLenght)]
         public string? Password { get; set; }
 
         public decimal Balance { get; set; }
 
+        [MaxLength(ValidationConstants.NameMaxLenght)]
         public string? Name { get; set; }
 
         public virtual ICollection<Bet> Bets { get; set; } = null!;

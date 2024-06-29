@@ -12,17 +12,17 @@ namespace P02_FootballBettingSystems.Models
         
         public int GameId { get; set; }
         [ForeignKey(nameof(GameId))]
-        public Game Game { get; set; }
+        public Game? Game { get; set; }
 
         public int PlayerId { get; set; }
         [ForeignKey(nameof(PlayerId))]
-        public Player Player { get; set; }
+        public Player? Player { get; set; }
 
-        public int ScoredGoals { get; set; }
+        public byte ScoredGoals { get; set; }
 
-        public int Assists { get; set; }
+        public byte Assists { get; set; }
 
-        public int MinutesPlayed { get; set; }
+        public byte MinutesPlayed { get; set; }
     }
     
 }

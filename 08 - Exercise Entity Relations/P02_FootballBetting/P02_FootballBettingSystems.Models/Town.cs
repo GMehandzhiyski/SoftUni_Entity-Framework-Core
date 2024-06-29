@@ -15,7 +15,6 @@ namespace P02_FootballBettingSystems.Models
 
         public Town() 
         {
-            Players = new HashSet<Player>();
             Teams = new HashSet<Team>();    
         }
 
@@ -31,7 +30,6 @@ namespace P02_FootballBettingSystems.Models
         public Country? Country { get; set; }
 
         public virtual ICollection<Team> Teams { get; set; } = null!;
-        public virtual ICollection<Player> Players { get; set; } = null!;   
 
     }
 
