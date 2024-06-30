@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\AppData\\Local\\Temp\\ee646a38-252c-4707-9eb5-e9f2713cfcdd_P02_FootballBetting.zip.cdd\\P02_FootballBetting.Common\\DbConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|c:\\softuni_entity-framework-core\\08 - exercise entity relations\\p01_studentsystem\\p01_studentsystem\\data\\studentsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|solutionrelative:p01_studentsystem\\data\\studentsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\AppData\\Local\\Temp\\ee646a38-252c-4707-9eb5-e9f2713cfcdd_P02_FootballBetting.zip.cdd\\P02_FootballBetting.Common\\DbConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB632FB8-75B7-461C-BB16-DFC69505F202}|P01_StudentSystem\\P01_StudentSystem.csproj|c:\\softuni_entity-framework-core\\08 - exercise entity relations\\p01_studentsystem\\p01_studentsystem\\data\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,7 +57,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -65,13 +65,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "DbConfig.cs",
               "DocumentMoniker": "C:\\Users\\user\\AppData\\Local\\Temp\\ee646a38-252c-4707-9eb5-e9f2713cfcdd_P02_FootballBetting.zip.cdd\\P02_FootballBetting.Common\\DbConfig.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Users\\user\\AppData\\Local\\Temp\\ee646a38-252c-4707-9eb5-e9f2713cfcdd_P02_FootballBetting.zip.cdd\\P02_FootballBetting.Common\\DbConfig.cs",
               "ToolTip": "C:\\Users\\user\\AppData\\Local\\Temp\\ee646a38-252c-4707-9eb5-e9f2713cfcdd_P02_FootballBetting.zip.cdd\\P02_FootballBetting.Common\\DbConfig.cs [Read Only]",
               "RelativeToolTip": "..\\..\\..\\Users\\user\\AppData\\Local\\Temp\\ee646a38-252c-4707-9eb5-e9f2713cfcdd_P02_FootballBetting.zip.cdd\\P02_FootballBetting.Common\\DbConfig.cs [Read Only]",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-29T03:43:31.976Z",
               "EditorCaption": " [Read Only]"
@@ -198,13 +197,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "StudentSystemContext.cs",
               "DocumentMoniker": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\StudentSystemContext.cs",
               "RelativeDocumentMoniker": "P01_StudentSystem\\Data\\StudentSystemContext.cs",
               "ToolTip": "C:\\SoftUni_Entity-Framework-Core\\08 - Exercise Entity Relations\\P01_StudentSystem\\P01_StudentSystem\\Data\\StudentSystemContext.cs",
               "RelativeToolTip": "P01_StudentSystem\\Data\\StudentSystemContext.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAxwBIAAAAIAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAgAAABoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-27T17:42:03.33Z",
               "EditorCaption": ""
