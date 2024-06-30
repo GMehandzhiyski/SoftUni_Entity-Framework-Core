@@ -12,7 +12,7 @@ namespace MusicHub.Data.Models
     {
         public Performer()
         {
-            PerformersSongs = new HashSet<SongPerformer>();
+            PerformerSongs = new HashSet<SongPerformer>();
         }
 
         [Key]
@@ -32,7 +32,7 @@ namespace MusicHub.Data.Models
         [Required]
         public decimal NetWorth  { get; set; }
 
-        public virtual ICollection<SongPerformer>? PerformersSongs { get; set; }
+        public virtual ICollection<SongPerformer>? PerformerSongs { get; set; }
 
 
 
