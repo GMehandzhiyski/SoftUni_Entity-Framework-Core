@@ -14,7 +14,7 @@
 
             DbInitializer.ResetDatabase(context);
 
-            Console.WriteLine(ExportAlbumsInfo(context, 9));
+            Console.WriteLine(ExportSongsAboveDuration(context, 4));
         }
 
         public static string ExportAlbumsInfo(MusicHubDbContext context, int producerId)
@@ -68,8 +68,13 @@
         }
 
         public static string ExportSongsAboveDuration(MusicHubDbContext context, int duration)
-        {
-            throw new NotImplementedException();
+        { 
+            
+            
+          StringBuilder sb = new StringBuilder();
+
+
+           return sb.ToString().TrimEnd();
         }
     }
 }
