@@ -18,7 +18,7 @@
 
         public DbSet<Performer> Performers { get; set; }
 
-        public DbSet<Producer> Producers { get; set; }
+        public DbSet<Producer> Producers { get; set; } = null!;
 
         public DbSet<Song> Songs { get; set; }
 
