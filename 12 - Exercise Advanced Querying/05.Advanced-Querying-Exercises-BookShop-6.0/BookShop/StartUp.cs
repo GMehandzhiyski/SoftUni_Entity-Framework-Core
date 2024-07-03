@@ -12,7 +12,7 @@
             using var context = new BookShopContext();
             //DbInitializer.ResetDatabase(db);
 
-            Console.WriteLine(GetGoldenBooks(context));
+            Console.WriteLine(GetBooksByPrice(context));
         }
 
         //02.
@@ -51,6 +51,22 @@
             return string.Join(Environment.NewLine,books.Select(b => b.Title));
         }
 
+        //04.
+        public static string GetBooksByPrice(BookShopContext context)
+        {
+            var books = context.Books
+                .Where(b => b.Price > 40)
+                .Select(b => new
+                {
+                    b.Title,
+                    b.Price
+                })
+                .OrderByDescending(b => b.Price)
+                .ToList();
+
+
+            return string.Join(Environment.NewLine,books.Select(b => $"{b.Title} - ${b.Price:f2}" ));
+        }
     }
 }
 
