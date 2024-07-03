@@ -3,6 +3,7 @@
     using BookShop.Models.Enums;
     using Data;
     using Initializer;
+    using System.Globalization;
     using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
     public class StartUp
@@ -10,9 +11,9 @@
         public static void Main()
         {
             using var context = new BookShopContext();
-            //DbInitializer.ResetDatabase(db);
+            //DbInitializer.ResetDatabase(context);
 
-            Console.WriteLine(GetBooksByCategory(context, "horror mystery drama"));
+            Console.WriteLine(GetBooksReleasedBefore(context, "30-12-1989"));
         }
 
         //02.
@@ -94,6 +95,26 @@
                 .ToArray();
 
             return string.Join(Environment.NewLine, books);
+        }
+
+        //07.
+        public static string GetBooksReleasedBefore(BookShopContext context, string date)
+        {
+            DateTime parseDate = DateTime.ParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+            var books = context.Books
+                .Where(b => b.ReleaseDate < parseDate)
+                .OrderByDescending(b => b.ReleaseDate)
+                .Select(b => new 
+                {
+                    b.Title,
+                    b.EditionType,
+                    b.ReleaseDate,
+                    b.Price
+                })
+                .ToArray();
+
+            return string.Join(Environment.NewLine, books.Select(b => $"{b.Title} - {b.EditionType} - ${b.Price:f2}"));
         }
     }
 }
