@@ -12,7 +12,7 @@
             using var context = new BookShopContext();
             //DbInitializer.ResetDatabase(db);
 
-            Console.WriteLine(GetBooksNotReleasedIn(context, 2000));
+            Console.WriteLine(GetBooksNotReleasedIn(context, 1998));
         }
 
         //02.
@@ -72,8 +72,12 @@
         //05.
         public static string GetBooksNotReleasedIn(BookShopContext context, int year)
         {
-
-            return "";
+            var books = context.Books
+                .Where(b => b.ReleaseDate.HasValue 
+                        && b.ReleaseDate.Value.Year != year)
+                .Select(b => b.Title)
+                .ToList();
+            return string.Join(Environment.NewLine,books);
         }
     }
 }
