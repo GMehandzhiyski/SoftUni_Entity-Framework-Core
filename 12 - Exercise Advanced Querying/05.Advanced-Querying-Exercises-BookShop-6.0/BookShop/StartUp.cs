@@ -1,8 +1,10 @@
 ﻿namespace BookShop
 {
+    using BookShop.Models;
     using BookShop.Models.Enums;
     using Data;
     using Initializer;
+    using Microsoft.EntityFrameworkCore.Metadata.Internal;
     using System.Globalization;
     using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
@@ -13,7 +15,7 @@
             using var context = new BookShopContext();
             //DbInitializer.ResetDatabase(context);
 
-            Console.WriteLine(GetBooksByAuthor(context, "R"));
+            Console.WriteLine(CountBooks(context, 12));
         }
 
         //02.
@@ -156,6 +158,14 @@
                 })
                 .OrderBy(n => n.BookId);
             return string.Join(Environment.NewLine, books.Select(a => $"{a.Title} ({a.FirstName} {a.LastName})"));
+        }
+
+        //11.
+        public static int CountBooks(BookShopContext context, int lengthCheck)
+        {
+           
+            return context.Books
+                   .Count(b => b.Title.Length > lengthCheck);
         }
 
     }
