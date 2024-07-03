@@ -70,27 +70,29 @@
         public static string ExportSongsAboveDuration(MusicHubDbContext context, int duration)
         {
             var songs = context.Songs
+                //.Where(s => s.Duration.TotalSeconds > duration) //Time  span is not to be convert to SQL
+                .Where(s => (s.Duration.Hours * 3600 + s.Duration.Minutes * 60 + s.Duration.Seconds) > duration)
                 .AsEnumerable()
-                .Where(s => s.Duration.TotalSeconds > duration)
                 .Select(s => new
                 {
                     SongName = s.Name,
                     PerformersName = s.SongPerformers
                         .Select(pn => $"{pn.Performer.FirstName} {pn.Performer.LastName}")
-                        .OrderBy(n => n).ToList(),
+                        .OrderBy(n => n),
                     WriteName = s.Writer.Name,
                     AlbumProducer = s.Album.Producer.Name,
                     DurationFormat = s.Duration.ToString("c")
-                  
+
 
                 })
                 .OrderBy(s => s.SongName)
-                .ThenBy(s => s.WriteName)
-                .ToList();
-                
+                .ThenBy(s => s.WriteName);
+             
           StringBuilder sb = new StringBuilder();
 
+
             int counterSong = 1;
+
             foreach (var song in songs)
             {
                 sb.AppendLine($"-Song #{counterSong}");
