@@ -12,7 +12,7 @@
             using var context = new BookShopContext();
             //DbInitializer.ResetDatabase(db);
 
-            Console.WriteLine(GetBooksNotReleasedIn(context, 1998));
+            Console.WriteLine(GetBooksByCategory(context, "horror mystery drama"));
         }
 
         //02.
@@ -78,6 +78,22 @@
                 .Select(b => b.Title)
                 .ToList();
             return string.Join(Environment.NewLine,books);
+        }
+
+        //06.
+        public static string GetBooksByCategory(BookShopContext context, string input)
+        {
+            string[] inputString = input
+                .ToLower()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            var books = context.BooksCategories
+                .Where(bc => inputString.Contains(bc.Category.Name.ToLower()))
+                .Select(bc => bc.Book.Title)
+                .OrderBy(t => t)
+                .ToArray();
+
+            return string.Join(Environment.NewLine, books);
         }
     }
 }
