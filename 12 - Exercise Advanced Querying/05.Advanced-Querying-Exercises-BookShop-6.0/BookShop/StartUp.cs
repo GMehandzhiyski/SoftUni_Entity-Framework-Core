@@ -12,7 +12,7 @@
             using var context = new BookShopContext();
             //DbInitializer.ResetDatabase(db);
 
-            Console.WriteLine(GetBooksByPrice(context));
+            Console.WriteLine(GetBooksNotReleasedIn(context, 2000));
         }
 
         //02.
@@ -65,7 +65,15 @@
                 .ToList();
 
 
-            return string.Join(Environment.NewLine,books.Select(b => $"{b.Title} - ${b.Price:f2}" ));
+            return string.Join(Environment.NewLine,
+                books.Select(a => $"{a.Title} - {a.Price:f2}" ));
+        }
+
+        //05.
+        public static string GetBooksNotReleasedIn(BookShopContext context, int year)
+        {
+
+            return "";
         }
     }
 }
