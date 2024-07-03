@@ -1,5 +1,6 @@
 ﻿namespace BookShop
 {
+    using BookShop.Models.Enums;
     using Data;
     using Initializer;
     using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -11,17 +12,23 @@
             using var context = new BookShopContext();
             //DbInitializer.ResetDatabase(db);
 
-            Console.WriteLine(GetBooksByAgeRestriction(context, "miNor"));
+            Console.WriteLine(GetBooksByAgeRestriction(context, "teEN"));
         }
 
-        //01.
+        //02.
         public static string GetBooksByAgeRestriction(BookShopContext context, string command)
         {
-            var commandToLower = command.ToLower();
+            if(!Enum.TryParse(command, true, out AgeRestriction ageRestrivtion))
+            {
+                return string.Empty;
+            }
+
+            //var commandToLower = command.ToLower();
             var books = context.Books
-                .Where(b => b.Title.ToLower() == commandToLower)
+                .Where(b => b.AgeRestriction == ageRestrivtion)
                 .Select(b => b.Title)
                 .OrderBy(b => b);
+                //.ToList();
 
 
             return string.Join(Environment.NewLine,books);
