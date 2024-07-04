@@ -6,6 +6,7 @@
     using Initializer;
     using Microsoft.EntityFrameworkCore.Metadata.Internal;
     using System.Globalization;
+    using System.Text;
     using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
     public class StartUp
@@ -15,7 +16,7 @@
             using var context = new BookShopContext();
             //DbInitializer.ResetDatabase(context);
 
-            Console.WriteLine(GetTotalProfitByCategory(context));
+            Console.WriteLine(GetMostRecentBooks(context));
         }
 
         //02.
@@ -197,6 +198,38 @@
                 .ToArray();
 
             return string.Join(Environment.NewLine, books.Select(a => $"{a.CategoryName} ${a.Profit:f2}")) ;
+        }
+
+        //14.
+        public static string GetMostRecentBooks(BookShopContext context)
+        {
+            var books = context.Categories
+                .Select(c => new
+                {
+                    CategoryName = c.Name,
+                    MostBook = c.CategoryBooks
+                        .OrderByDescending(b => b.Book.ReleaseDate)
+                    .Select(b => $"{b.Book.Title} ({b.Book.ReleaseDate.Value.Year})")
+                    .Take(3)
+                })
+                .OrderBy(n => n.CategoryName)
+                .ToList();
+
+          var sb = new StringBuilder();
+
+            foreach (var cat in books)
+            { 
+                sb.AppendLine($"--{cat.CategoryName}");
+
+                foreach (var item in cat.MostBook)
+                {
+                    sb.AppendLine(item);
+                }
+
+            
+            }
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
