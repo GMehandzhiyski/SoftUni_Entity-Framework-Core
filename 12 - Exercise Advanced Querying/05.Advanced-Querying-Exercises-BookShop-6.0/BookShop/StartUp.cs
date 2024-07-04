@@ -16,7 +16,8 @@
             using var context = new BookShopContext();
             //DbInitializer.ResetDatabase(context);
 
-            Console.WriteLine(GetMostRecentBooks(context));
+            //Console.WriteLine(IncreasePrices(context));
+            IncreasePrices(context);
         }
 
         //02.
@@ -230,6 +231,22 @@
             }
 
             return sb.ToString().TrimEnd();
+        }
+
+        //15.
+        public static void IncreasePrices(BookShopContext context)
+        {
+            var books = context.Books
+                .Where(b => b.ReleaseDate.Value.Year < 2010)
+                //.Select(b => b.Price)
+                .ToList();
+
+            foreach (var book in books)
+            {
+                book.Price = book.Price + 5;
+            }
+
+            context.SaveChanges();
         }
     }
 }
