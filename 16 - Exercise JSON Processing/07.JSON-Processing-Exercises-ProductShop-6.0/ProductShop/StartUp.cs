@@ -77,7 +77,14 @@ namespace ProductShop
 
         //04.
         public static string ImportCategoryProducts(ProductShopContext context, string inputJson)
-        {
+        { 
+            var catProducts = JsonConvert.DeserializeObject<List<CategoryProduct>>(inputJson);
+
+            var categoryProducts = catProducts
+                .Where(c => c.CategoryId != null && c.ProductId != null)
+                .ToList();
+            context.CategoriesProducts.AddRange(categoryProducts);
+            context.SaveChanges();
 
            return $"Successfully imported {categoryProducts.Count}";
         }
