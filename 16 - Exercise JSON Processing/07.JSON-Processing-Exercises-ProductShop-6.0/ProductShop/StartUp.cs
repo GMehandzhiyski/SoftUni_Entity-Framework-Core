@@ -38,8 +38,14 @@ namespace ProductShop
         {
             var products = JsonConvert.DeserializeObject<List<Product>>(inputJson);
 
+            if(products is not null)
+            {
+                context.Products.AddRange(products);
+                context.SaveChanges();
+            }
 
-            return $"Successfully imported {products.Count}";
+
+            return $"Successfully imported {products?.Count}";
         }
 
 
