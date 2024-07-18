@@ -34,7 +34,10 @@ namespace ProductShop
             //Console.WriteLine(GetSoldProducts(context));
 
             //07.
-            Console.WriteLine(GetCategoriesByProductsCount(context));
+            //Console.WriteLine(GetCategoriesByProductsCount(context));
+
+            //08.
+            Console.WriteLine(GetUsersWithProducts(context));
         }
 
         //01.
@@ -164,6 +167,30 @@ namespace ProductShop
                 })
                 .OrderByDescending(c => c.productsCount);
             var json = JsonConvert.SerializeObject(categorias, Formatting.Indented);
+            return json;
+        }
+
+        //08.
+        public static string GetUsersWithProducts(ProductShopContext context)
+        {
+            var users = context.Users
+                .Where(u => u.ProductsSold.Any(u => u.BuyerId != null))
+                .Select(u => new
+                {
+                    lastName = u.LastName,
+                    age = u.Age,
+                    solidProducts = u.ProductsSold
+                   .Select(p => new 
+                   {
+                        name = p.Name,
+                        price = p.Price
+                   })
+                    
+
+                });
+
+
+            var json = JsonConvert.SerializeObject (users, Formatting.Indented);
             return json;
         }
     }
