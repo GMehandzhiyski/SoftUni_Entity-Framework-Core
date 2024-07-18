@@ -28,7 +28,10 @@ namespace ProductShop
             //Console.WriteLine(ImportCategoryProducts(context, userText));
 
             ////05.
-            Console.WriteLine(GetProductsInRange(context));
+            //Console.WriteLine(GetProductsInRange(context));
+
+            //06.
+            Console.WriteLine(GetSoldProducts(context));
         }
 
         //01.
@@ -109,6 +112,34 @@ namespace ProductShop
 
             var json = JsonConvert.SerializeObject(products, Formatting.Indented);
 
+            return json;
+        }
+
+        //06.
+        public static string GetSoldProducts(ProductShopContext context)
+        {
+            var users = context.Users
+                 .Where(u => u.ProductsSold.Any(u => u.BuyerId != null))
+                 .Select(u => new
+                 {
+                     firstName = u.FirstName,
+                     lastName = u.LastName,
+                     soldProducts = u.ProductsSold
+                     .Select(p => new
+                     {
+                         name = p.Name,
+                         price = p.Price,
+                         buyerFirstName = p.Buyer.FirstName,
+                         buyerLastName = p.Buyer.LastName,
+
+                     })
+                     
+                 })
+                 .OrderBy(u => u.lastName)
+                 .ThenBy(u => u.firstName);
+
+         
+            var json = JsonConvert.SerializeObject (users, Formatting.Indented);    
             return json;
         }
 
