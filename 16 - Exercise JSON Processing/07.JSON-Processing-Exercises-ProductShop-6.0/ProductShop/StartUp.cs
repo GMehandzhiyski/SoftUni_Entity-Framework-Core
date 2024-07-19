@@ -210,13 +210,13 @@ namespace ProductShop
                 })
             };
 
-            string jsonOutput = JsonConvert.SerializeObject(output, new JsonSerializerSettings
+            string json = JsonConvert.SerializeObject(output, new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,
                 NullValueHandling = NullValueHandling.Ignore
             });
 
-            return jsonOutput;
+            return json;
         }
     }
 }
