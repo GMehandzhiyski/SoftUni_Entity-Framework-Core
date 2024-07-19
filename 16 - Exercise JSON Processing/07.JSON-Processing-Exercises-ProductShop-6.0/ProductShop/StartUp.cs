@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ProductShop.Data;
 using ProductShop.Models;
+using System.Collections.Specialized;
 
 namespace ProductShop
 {
@@ -173,25 +174,49 @@ namespace ProductShop
         //08.
         public static string GetUsersWithProducts(ProductShopContext context)
         {
-            var users = context.Users
-                .Where(u => u.ProductsSold.Any(u => u.BuyerId != null))
+            var usersWithProduct = context.Users
+                .Where(u => u.ProductsSold.Any(p => p.BuyerId != null))
                 .Select(u => new
                 {
+                    firstName = u.FirstName,
                     lastName = u.LastName,
                     age = u.Age,
-                    solidProducts = u.ProductsSold
-                   .Select(p => new 
-                   {
-                        name = p.Name,
-                        price = p.Price
-                   })
-                    
+                    soldProducts = u.ProductsSold
+                        .Where(p => p.BuyerId != null)
+                        .Select(p => new
+                        {
+                            name = p.Name,
+                            price = p.Price
+                        })
+                        .ToArray()
+                })
+                .OrderByDescending(u => u.soldProducts.Count())
+                .ToArray();
 
-                });
 
+            var output = new
+            {
+                usersCount = usersWithProduct.Count(),
+                users = usersWithProduct.Select(u => new
+                {
+                    u.firstName,
+                    u.lastName,
+                    u.age,
+                    soldProducts = new
+                    {
+                        count = u.soldProducts.Count(),
+                        products = u.soldProducts
+                    }
+                })
+            };
 
-            var json = JsonConvert.SerializeObject (users, Formatting.Indented);
-            return json;
+            string jsonOutput = JsonConvert.SerializeObject(output, new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                NullValueHandling = NullValueHandling.Ignore
+            });
+
+            return jsonOutput;
         }
     }
 }
