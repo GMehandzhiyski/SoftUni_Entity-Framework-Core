@@ -228,8 +228,6 @@ namespace CarDealer
         public static string GetCarsWithTheirListOfParts(CarDealerContext context)
         {
             var allCars = context.Cars
-                .Include(pc => pc.PartsCars)
-                .ThenInclude(pc => pc.Part)
                 .Select(c => new
                 {
                     car = new
