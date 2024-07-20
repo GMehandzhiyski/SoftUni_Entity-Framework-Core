@@ -16,11 +16,11 @@ namespace CarDealer
 
             //09.
             //string userText = File.ReadAllText("../../../Datasets/suppliers.json");
-            //Console.WriteLine(ImportSuppliers(context,userText));
+            //Console.WriteLine(ImportSuppliers(context, userText));
 
             //10.
-            //string userText = File.ReadAllText("../../../Datasets/parts.json");
-            //Console.WriteLine(ImportParts(context, userText));
+            //string partsString = File.ReadAllText("../../../Datasets/parts.json");
+            //Console.WriteLine(ImportParts(context, partsString));
 
             //11.
             //string userText = File.ReadAllText("../../../Datasets/cars.json");
@@ -35,7 +35,10 @@ namespace CarDealer
             //Console.WriteLine(ImportSales(context, userText));
 
             //14.
-            Console.WriteLine(GetOrderedCustomers(context));
+            //Console.WriteLine(GetOrderedCustomers(context));
+
+            //15.
+            Console.WriteLine(GetCarsFromMakeToyota(context));
         }
         //09.
         public static string ImportSuppliers(CarDealerContext context, string inputJson)
@@ -55,16 +58,16 @@ namespace CarDealer
 
             var validSupplierId = context.Suppliers
                 .Select(x => x.Id)
-                .ToList();
+                .ToArray();
 
             var partsImport = parts
                 .Where(p => validSupplierId.Contains(p.SupplierId))
-                .ToList();
+                .ToArray();
 
             context.Parts.AddRange(partsImport);
             context.SaveChanges();
 
-            return $"Successfully imported {partsImport.Count}.";
+            return $"Successfully imported {partsImport.Length}.";
         }
 
         //11.
@@ -94,7 +97,7 @@ namespace CarDealer
                         PartId = partId
 
                     });
-                   
+
                 }
             }
 
@@ -173,6 +176,26 @@ namespace CarDealer
              .ToList();
 
             var json = JsonConvert.SerializeObject(orderedCustomers, Formatting.Indented);
+            return json;
+        }
+
+        //15.
+        public static string GetCarsFromMakeToyota(CarDealerContext context)
+        {
+            var toyotaCars = context.Cars
+                .Where(c => c.Make == "Toyota")
+                .OrderBy(c => c.Model)
+                .ThenByDescending(c => c.TraveledDistance)
+                .Select(c => new
+                {
+                    c.Id,
+                    c.Make,
+                    c.Model,
+                    c.TraveledDistance
+                });
+
+
+            var json = JsonConvert.SerializeObject(toyotaCars, Formatting.Indented);
             return json;
         }
     }

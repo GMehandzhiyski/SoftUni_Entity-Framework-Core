@@ -3,6 +3,6 @@
     public static class Configuration
     {
         public const string ConnectionString =
-             "Server=.;Database=ProductShop;User Id=sa;Password=Project123;TrustServerCertificate=true";
+             "Server=.;Database=CarDealer;User Id=sa;Password=Project123;TrustServerCertificate=true";
     }
 }
