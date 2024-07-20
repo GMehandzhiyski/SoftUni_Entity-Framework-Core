@@ -1,5 +1,7 @@
 ﻿using CarDealer.Data;
+using CarDealer.DTOs.Import;
 using CarDealer.Models;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.EntityFrameworkCore.Update;
 using Newtonsoft.Json;
 using System.Text.Json.Serialization;
@@ -58,13 +60,42 @@ namespace CarDealer
         //11.
         public static string ImportCars(CarDealerContext context, string inputJson)
         {
-            var cars = JsonConvert.DeserializeObject<List<Car>>(inputJson);
+            var carsDtos = JsonConvert.DeserializeObject<List<ImportCarDto>>(inputJson);
+
+            var cars = new HashSet<Car>();
+            var partsCars = new HashSet<PartCar>();
+
+            foreach (var carDto in carsDtos)
+            {
+                var newCar = new Car
+                {
+                    Make = carDto.Make,
+                    Model = carDto.Model,
+                    TraveledDistance = carDto.TraveledDistance
+                };
+
+                cars.Add(newCar);
+
+                foreach (var partId in carDto.PartsId.Distinct())
+                {
+                    partsCars.Add(new PartCar()
+                    {
+                        Car = newCar,
+                        PartId = partId
+
+                    });
+                   
+                }
+            }
 
             context.Cars.AddRange(cars);
+            context.PartsCars.AddRange(partsCars);
+
             context.SaveChanges();
 
 
-        return $"Successfully imported {cars.Count}.";
+
+            return $"Successfully imported {cars.Count}.";
         }
     }
 }

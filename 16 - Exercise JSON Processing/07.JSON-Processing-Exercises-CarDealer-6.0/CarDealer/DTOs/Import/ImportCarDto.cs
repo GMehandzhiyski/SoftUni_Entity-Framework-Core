@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace CarDealer.DTOs.Import
 {
-    internal class ImportCarDto
+    public class ImportCarDto
     {
+        public string Make { get; set; } = null!;
+
+        public string Model { get; set; } = null!;
+
+        public long TraveledDistance { get; set; }
+
+        public ICollection<int> PartsId { get; set; }   
+
     }
 }
