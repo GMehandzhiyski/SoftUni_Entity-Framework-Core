@@ -1,7 +1,9 @@
 ﻿using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using Microsoft.EntityFrameworkCore.Update;
 using Newtonsoft.Json;
 using System.Text.Json.Serialization;
@@ -41,7 +43,10 @@ namespace CarDealer
             //Console.WriteLine(GetCarsFromMakeToyota(context));
 
             //16.
-            Console.WriteLine(GetLocalSuppliers(context));
+            //Console.WriteLine(GetLocalSuppliers(context));
+
+            //17.
+            Console.WriteLine(GetCarsWithTheirListOfParts(context));
         }
         //09.
         public static string ImportSuppliers(CarDealerContext context, string inputJson)
@@ -217,6 +222,38 @@ namespace CarDealer
 
             var jason = JsonConvert.SerializeObject(suppliers, Formatting.Indented);
             return jason;
+        }
+
+        //17.
+        public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+        {
+            var allCars = context.Cars
+                .Include(pc => pc.PartsCars)
+                .ThenInclude(pc => pc.Part)
+                .Select(c => new
+                {
+                    car = new
+                    {
+                        c.Make,
+                        c.Model,
+                        c.TraveledDistance
+                    },
+
+                    parts = c.PartsCars.Select(pc => new
+                    {
+                        pc.Part.Name,
+                        Price = pc.Part.Price.ToString("f2")
+                    })
+
+
+
+                });
+
+
+
+            var json = JsonConvert.SerializeObject(allCars, Formatting.Indented);
+            return json;
+
         }
     }
 
