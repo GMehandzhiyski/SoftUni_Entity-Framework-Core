@@ -25,12 +25,12 @@ namespace CarDealer
             //Console.WriteLine(ImportParts(context, userXml));
 
             //11.
-            string userXml = File.ReadAllText("../../../Datasets/cars.xml");
-            Console.WriteLine(ImportCars(context, userXml));
+            //string userXml = File.ReadAllText("../../../Datasets/cars.xml");
+            //Console.WriteLine(ImportCars(context, userXml));
 
             //12.
-            //string userXml = File.ReadAllText("../../../Datasets/customers.xml");
-            //Console.WriteLine(ImportCustomers(context, userXml));
+            string customersXml = File.ReadAllText("../../../Datasets/customers.xml");
+            Console.WriteLine(ImportCustomers(context, customersXml));
 
         }
 
@@ -155,7 +155,7 @@ namespace CarDealer
             using (StringReader reader = new StringReader(inputXml))
             {
                 customerImportDtos = (CustomerImportDto[])xmlSerializer.Deserialize(reader);
-            }
+            };
 
             Customer[] customers = customerImportDtos
                 .Select(dto => new Customer()

@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace CarDealer.DTOs.Import
 {
-    [XmlType("customer")]
+    [XmlType("Customer")]
     public class CustomerImportDto
     {
         [XmlElement("name")]
