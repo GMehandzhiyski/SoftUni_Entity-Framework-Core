@@ -41,7 +41,10 @@ namespace CarDealer
             //Console.WriteLine(ImportSales(context, customersXml));
 
             //14.
-            Console.WriteLine(GetCarsWithDistance(context));
+           //Console.WriteLine(GetCarsWithDistance(context));
+
+            //15.
+            Console.WriteLine(GetCarsFromMakeBmw(context));
         }
 
         //09.
@@ -235,7 +238,24 @@ namespace CarDealer
             return SerializeToXml(carWithDistance, "cars");
         }
 
+        //15.
+        public static string GetCarsFromMakeBmw(CarDealerContext context)
+        {
+            var carsBMW = context.Cars
+                .Where(c => c.Make == "BMW")
+                .Select(c => new BmwExportDto()
+                {
+                    Id = c.Id,
+                    Model = c.Model,
+                    TraveledDistance = c.TraveledDistance
 
+                })
+                .OrderBy(c => c.Model)
+                .ThenByDescending(c => c.TraveledDistance)
+                .ToArray();
+
+            return SerializeToXml(carsBMW, "cars", true);
+        }
 
         /// <summary>
         /// 
