@@ -1,11 +1,15 @@
 ﻿using AutoMapper.Configuration.Annotations;
 using CarDealer.Data;
+using CarDealer.DTOs.Export;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
 using Castle.Core.Resource;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace CarDealer
@@ -33,11 +37,11 @@ namespace CarDealer
             //Console.WriteLine(ImportCustomers(context, customersXml));
 
             //13.
-            string customersXml = File.ReadAllText("../../../Datasets/sales.xml");
-            Console.WriteLine(ImportSales(context, customersXml));
+            //string customersXml = File.ReadAllText("../../../Datasets/sales.xml");
+            //Console.WriteLine(ImportSales(context, customersXml));
 
             //14.
-            //Console.WriteLine(ImportSales(context));
+            Console.WriteLine(GetCarsWithDistance(context));
         }
 
         //09.
@@ -210,6 +214,66 @@ namespace CarDealer
 
             return $"Successfully imported {sales.Length}";
         }
-       
+
+
+        //14.
+        public static string GetCarsWithDistance(CarDealerContext context)
+        {
+            var carWithDistance = context.Cars
+                .Where(c => c.TraveledDistance > 2_000_000)
+                .Select(c => new CarWithDistanceExportDto()
+                {
+                    Make = c.Make,
+                    Model = c.Model,
+                    TraveledDistance = c.TraveledDistance
+                })
+                .OrderBy(c => c.Make)
+                .ThenBy(c => c.Model)
+                .Take(10)
+                .ToArray();
+
+            return SerializeToXml(carWithDistance, "cars");
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dto"></param>
+        /// <param name="xmlRootAttribute"></param>
+        /// <param name="omitDeclaration"></param>
+        /// <returns></returns>
+        private static string SerializeToXml<T>(T dto, string xmlRootAttribute, bool omitDeclaration = false)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T), new XmlRootAttribute(xmlRootAttribute));
+            StringBuilder stringBuilder = new StringBuilder();
+
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = omitDeclaration,
+                Encoding = new UTF8Encoding(false),
+                Indent = true
+            };
+
+            using (StringWriter stringWriter = new StringWriter(stringBuilder, CultureInfo.InvariantCulture))
+            using (XmlWriter xmlWriter = XmlWriter.Create(stringWriter, settings))
+            {
+                XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
+                xmlSerializerNamespaces.Add(string.Empty, string.Empty);
+
+                try
+                {
+                    xmlSerializer.Serialize(xmlWriter, dto, xmlSerializerNamespaces);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
     }
 }
