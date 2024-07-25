@@ -41,7 +41,7 @@ namespace CarDealer
             //Console.WriteLine(ImportSales(context, customersXml));
 
             //14.
-           //Console.WriteLine(GetCarsWithDistance(context));
+            //Console.WriteLine(GetCarsWithDistance(context));
 
             //15.
             //Console.WriteLine(GetCarsFromMakeBmw(context));
@@ -50,7 +50,13 @@ namespace CarDealer
             //Console.WriteLine(GetLocalSuppliers(context));
 
             //17.
-            Console.WriteLine(GetCarsWithTheirListOfParts(context));
+            //Console.WriteLine(GetCarsWithTheirListOfParts(context));
+
+            //18.
+            //Console.WriteLine(GetTotalSalesByCustomer(context));
+
+            //19.
+            Console.WriteLine(GetSalesWithAppliedDiscount(context));
         }
 
         //09.
@@ -105,7 +111,7 @@ namespace CarDealer
                     Name = dto.Name,
                     Price = dto.Price,
                     Quantity = dto.Quantity,
-                    SupplierId =dto.SupplierId
+                    SupplierId = dto.SupplierId
                 })
                 .ToList();
 
@@ -218,8 +224,8 @@ namespace CarDealer
                 })
                 .ToArray();
 
-           context.Sales.AddRange(sales);
-           context.SaveChanges();
+            context.Sales.AddRange(sales);
+            context.SaveChanges();
 
             return $"Successfully imported {sales.Length}";
         }
@@ -309,6 +315,61 @@ namespace CarDealer
         }
 
 
+        //18.
+        public static string GetTotalSalesByCustomer(CarDealerContext context)
+        {
+            var temp = context.Customers
+                .Where(c => c.Sales.Any())
+                .Select(c => new
+                {
+                    FullName = c.Name,
+                    BoughtCars = c.Sales.Count,
+                    SalesInfo = c.Sales.Select(s => new
+                    {
+                        Prices = c.IsYoungDriver
+                        ? s.Car.PartsCars.Sum(pc => Math.Round((double)pc.Part.Price * 0.95, 2))
+                        : s.Car.PartsCars.Sum(pc => (double)pc.Part.Price)
+                    }).ToArray()
+                }).ToArray();
+
+            var customerSalesInfo = temp
+                .OrderByDescending(x =>
+                    x.SalesInfo.Sum(y => y.Prices))
+                .Select(a => new CustomerExportDto()
+                {
+                    FullName = a.FullName,
+                    CarsBought = a.BoughtCars,
+                    MoneySpent = a.SalesInfo.Sum(b => (decimal)b.Prices)
+                })
+                .ToArray();
+
+            return SerializeToXml(customerSalesInfo, "customers");
+        }
+
+        //19.
+        public static string GetSalesWithAppliedDiscount(CarDealerContext context)
+        {
+            var sales = context.Sales
+                .Select(s => new SaleWithDiscount()
+                {
+                    Car = new CarDto()
+                    {
+                        Make = s.Car.Make,
+                        Model = s.Car.Model,
+                        TraveledDistance = s.Car.TraveledDistance
+                    },
+                    Discount = (int)s.Discount,
+                    CustomerName = s.Customer.Name,
+                    Price = s.Car.PartsCars
+                        .Sum(pc => pc.Part.Price),
+                    PriceWithDiscount = Math.Round(
+                        (double)(s.Car.PartsCars.Sum(p => p.Part.Price)
+                                 * (1 - (s.Discount / 100))), 4)
+                }).ToArray();
+
+            return SerializeToXml(sales, "sales");
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -348,4 +409,5 @@ namespace CarDealer
             return stringBuilder.ToString();
         }
     }
+    
 }
