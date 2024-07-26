@@ -20,7 +20,7 @@ namespace ProductShop.DTOs.Import
         [XmlElement("sellerId")]
         public int SellerId { get; set; }
 
-        [XmlElement("bayerId")]
+        [XmlElement("buyerId")]
         public int? BuyerId { get; set; }
       
 

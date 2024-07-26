@@ -69,8 +69,8 @@ namespace ProductShop
             HashSet<int> uniqueBuyerIds = new HashSet<int>();
 
             var products = importProductsDots
-               // .Where(i => i.BuyerId is not null)
-               // .Where(i => uniqueBuyerIds.Add((int)i.BuyerId))
+               //.Where(i => i.BuyerId is not null)
+               //.Where(i => uniqueBuyerIds.Add((int)i.BuyerId))
                 .Select(i => new Product()
                 {
                     Name = i.Name,
@@ -113,6 +113,8 @@ namespace ProductShop
 
             return $"Successfully imported {categories.Count}";
         }
+
+        //04
     }
 
 
