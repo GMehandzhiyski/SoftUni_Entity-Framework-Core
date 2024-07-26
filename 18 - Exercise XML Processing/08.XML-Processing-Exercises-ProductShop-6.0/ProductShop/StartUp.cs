@@ -18,12 +18,16 @@ namespace ProductShop
             //Console.WriteLine(ImportUsers(context, userXml));
 
             //02.
-            string userXml = File.ReadAllText("../../../Datasets/products.xml");
-            Console.WriteLine(ImportProducts(context, userXml));
+            //string userXml = File.ReadAllText("../../../Datasets/products.xml");
+            //Console.WriteLine(ImportProducts(context, userXml));
 
             //03.
-            // string userXml = File.ReadAllText("../../../Datasets/categories.xml");
+            //string userXml = File.ReadAllText("../../../Datasets/categories.xml");
             //Console.WriteLine(ImportCategories(context, userXml));
+
+            //04.
+            string userXml = File.ReadAllText("../../../Datasets/categories-products.xml");
+            Console.WriteLine(ImportCategoryProducts(context, userXml));
         }
 
         //01.
@@ -69,7 +73,7 @@ namespace ProductShop
             HashSet<int> uniqueBuyerIds = new HashSet<int>();
 
             var products = importProductsDots
-               //.Where(i => i.BuyerId is not null)
+               .Where(i => i.BuyerId is not null)
                //.Where(i => uniqueBuyerIds.Add((int)i.BuyerId))
                 .Select(i => new Product()
                 {
@@ -114,7 +118,53 @@ namespace ProductShop
             return $"Successfully imported {categories.Count}";
         }
 
-        //04
+        //04.
+        public static string ImportCategoryProducts(ProductShopContext context, string inputXml)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ImportCategoryProductDto[]),
+                new XmlRootAttribute("CategoryProducts"));
+
+            ImportCategoryProductDto[] importCategories;
+            using (var reader = new StringReader(inputXml))
+            {
+                importCategories = (ImportCategoryProductDto[])xmlSerializer.Deserialize(reader);
+            };
+
+            Console.WriteLine($"Imported CategoryProducts: {importCategories.Length}");
+
+            // Показване на няколко примерни записи от importCategories
+            foreach (var category in importCategories.Take(5))
+            {
+                Console.WriteLine($"Category ID: {category.CategoryId}, Product ID: {category.ProductId}");
+            }
+            var validCategoryId = context.Categories
+                .Select(v => v.Id)
+                .ToHashSet();
+
+            var validProductId = context.Products
+                .Select(v => v.Id)
+                .ToHashSet();
+
+            Console.WriteLine($"Valid Category IDs: {validCategoryId.Count}");
+            Console.WriteLine($"Valid Product IDs: {validProductId.Count}");
+
+            var categoryProducts = importCategories
+               .Where(vc => validCategoryId.Contains(vc.CategoryId))
+               .Where(vp => validProductId.Contains(vp.ProductId))
+                .Select(v => new CategoryProduct()
+                { 
+                    CategoryId = v.CategoryId,
+                    ProductId = v.ProductId
+                })
+                .ToArray();
+
+            Console.WriteLine($"Filtered CategoryProducts: {categoryProducts.Length}");
+
+            context.CategoryProducts.AddRange(categoryProducts);
+            context.SaveChanges();  
+
+            return $"Successfully imported {categoryProducts.Length}";
+        }
     }
 
 
