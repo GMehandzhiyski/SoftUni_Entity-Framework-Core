@@ -1,7 +1,11 @@
 ﻿using ProductShop.Data;
+using ProductShop.DTOs.Export;
 using ProductShop.DTOs.Import;
 using ProductShop.Models;
 using System.Diagnostics;
+using System.Globalization;
+using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -26,8 +30,14 @@ namespace ProductShop
             //Console.WriteLine(ImportCategories(context, userXml));
 
             //04.
-            string userXml = File.ReadAllText("../../../Datasets/categories-products.xml");
-            Console.WriteLine(ImportCategoryProducts(context, userXml));
+            //string userXml = File.ReadAllText("../../../Datasets/categories-products.xml");
+            //Console.WriteLine(ImportCategoryProducts(context, userXml));
+
+            //05.
+           // Console.WriteLine(GetProductsInRange(context));
+
+            //06.
+            Console.WriteLine(GetSoldProducts(context));
         }
 
         //01.
@@ -130,13 +140,13 @@ namespace ProductShop
                 importCategories = (ImportCategoryProductDto[])xmlSerializer.Deserialize(reader);
             };
 
-            Console.WriteLine($"Imported CategoryProducts: {importCategories.Length}");
+            //Console.WriteLine($"Imported CategoryProducts: {importCategories.Length}");
 
-            // Показване на няколко примерни записи от importCategories
-            foreach (var category in importCategories.Take(5))
-            {
-                Console.WriteLine($"Category ID: {category.CategoryId}, Product ID: {category.ProductId}");
-            }
+         
+            //foreach (var category in importCategories.Take(5))
+            //{
+            //    Console.WriteLine($"Category ID: {category.CategoryId}, Product ID: {category.ProductId}");
+            //}
             var validCategoryId = context.Categories
                 .Select(v => v.Id)
                 .ToHashSet();
@@ -145,8 +155,8 @@ namespace ProductShop
                 .Select(v => v.Id)
                 .ToHashSet();
 
-            Console.WriteLine($"Valid Category IDs: {validCategoryId.Count}");
-            Console.WriteLine($"Valid Product IDs: {validProductId.Count}");
+            //Console.WriteLine($"Valid Category IDs: {validCategoryId.Count}");
+            //Console.WriteLine($"Valid Product IDs: {validProductId.Count}");
 
             var categoryProducts = importCategories
                .Where(vc => validCategoryId.Contains(vc.CategoryId))
@@ -158,12 +168,97 @@ namespace ProductShop
                 })
                 .ToArray();
 
-            Console.WriteLine($"Filtered CategoryProducts: {categoryProducts.Length}");
+            //Console.WriteLine($"Filtered CategoryProducts: {categoryProducts.Length}");
 
             context.CategoryProducts.AddRange(categoryProducts);
             context.SaveChanges();  
 
             return $"Successfully imported {categoryProducts.Length}";
+        }
+
+        //05.
+        public static string GetProductsInRange(ProductShopContext context)
+        {
+            var allproducts = context.Products
+                .Where(p => p.Price >= 500
+                            && p.Price <= 1000)
+               .OrderBy(p => p.Price)
+               .Select(p => new ExportProductInRangeDto()
+               {
+                   Name = p.Name,
+                   Price = p.Price,
+                   BuyerName = p.Buyer.FirstName + " " + p.Buyer.LastName,
+
+               })
+               .Take(10)
+               .ToArray();
+
+            return SerializeToXml(allproducts, "Products");
+        }
+
+        //06.
+        public static string GetSoldProducts(ProductShopContext context)
+        {
+            var allUsers = context.Users
+                .OrderBy(u => u.LastName)
+                .ThenBy(u => u.FirstName)
+                .Where(u => u.ProductsSold.Any())
+                .Select(u => new ExportSoldProductsDto()
+                {
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    SoldProducts = u.ProductsSold
+                               .Select(p => new ProductsDto
+                               {
+                                    Name = p.Name,
+                                    Price = p.Price
+                               })
+                                .ToArray(),
+                })
+                .Take(5)
+                .ToArray();
+
+            return SerializeToXml(allUsers, "Users");
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dto"></param>
+        /// <param name="xmlRootAttribute"></param>
+        /// <param name="omitDeclaration"></param>
+        /// <returns></returns>
+        private static string SerializeToXml<T>(T dto, string xmlRootAttribute, bool omitDeclaration = false)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T), new XmlRootAttribute(xmlRootAttribute));
+            StringBuilder stringBuilder = new StringBuilder();
+
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = omitDeclaration,
+                Encoding = new UTF8Encoding(false),
+                Indent = true
+            };
+
+            using (StringWriter stringWriter = new StringWriter(stringBuilder, CultureInfo.InvariantCulture))
+            using (XmlWriter xmlWriter = XmlWriter.Create(stringWriter, settings))
+            {
+                XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
+                xmlSerializerNamespaces.Add(string.Empty, string.Empty);
+
+                try
+                {
+                    xmlSerializer.Serialize(xmlWriter, dto, xmlSerializerNamespaces);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return stringBuilder.ToString();
         }
     }
 
