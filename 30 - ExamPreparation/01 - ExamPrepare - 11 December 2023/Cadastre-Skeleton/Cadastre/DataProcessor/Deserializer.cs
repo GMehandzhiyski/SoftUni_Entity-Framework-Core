@@ -14,7 +14,7 @@
 
         public static string ImportDistricts(CadastreContext dbContext, string xmlDocument)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public static string ImportCitizens(CadastreContext dbContext, string jsonDocument)
