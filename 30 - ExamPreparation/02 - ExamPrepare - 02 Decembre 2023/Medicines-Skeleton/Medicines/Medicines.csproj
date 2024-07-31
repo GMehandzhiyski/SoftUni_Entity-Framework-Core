@@ -27,7 +27,7 @@
   <ItemGroup>
     <Folder Include="DataProcessor\ExportDtos\" />
     <Folder Include="DataProcessor\ImportDtos\" />
-    <Folder Include="Data\Models\Enums\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
