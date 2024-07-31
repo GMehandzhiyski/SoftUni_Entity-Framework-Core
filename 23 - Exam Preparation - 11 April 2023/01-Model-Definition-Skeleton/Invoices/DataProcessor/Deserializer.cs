@@ -3,9 +3,11 @@
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
     using System.Text;
-    using Boardgames.Helpers;
+    //using Boardgames.Helpers;
+    //using Castle.Components.DictionaryAdapter;
     using Invoices.Data;
     using Invoices.Data.Models;
+    using Invoices.Data.Models.Enums;
     using Invoices.DataProcessor.ImportDto;
     using Newtonsoft.Json;
 
@@ -88,9 +90,10 @@
         public static string ImportInvoices(InvoicesContext context, string jsonString)
         {
             StringBuilder sb = new StringBuilder();
-            HashSet<Invoice> invoices = new HashSet<Invoice>();
+            ICollection<Invoice> invoices = new List<Invoice>();
 
-            var deserialized = JsonConvert.DeserializeObject<ImportInvoiceDto[]>(jsonString)!;
+            var deserialized = 
+                JsonConvert.DeserializeObject<ImportInvoiceDto[]>(jsonString)!;
 
             foreach (var invoiceDto in deserialized)
             {
@@ -119,16 +122,18 @@
                     continue;
                 }
 
-                Invoice invoice = new Invoice()
+                Invoice newInvoice = new Invoice()
                 {
                     Number = invoiceDto.Number,
                     IssueDate = issueDate,
                     DueDate = dueDate,
                     Amount = invoiceDto.Amount,
-                    CurrencyType = invoiceDto.CurrencyType,
+                    CurrencyType = (CurrencyType)invoiceDto.CurrencyType,
                     ClientId = invoiceDto.ClientId,
                 };
-                invoices.Add(invoice);
+
+                invoices.Add(newInvoice);
+                sb.AppendLine(String.Format(SuccessfullyImportedInvoices, invoiceDto.Number));
 
             }
 
@@ -140,9 +145,58 @@
 
         public static string ImportProducts(InvoicesContext context, string jsonString)
         {
+            StringBuilder sb = new StringBuilder();
+            HashSet<Product> products = new HashSet<Product>(); 
 
+            var productDeserialize =
+                JsonConvert.DeserializeObject < ImportProductsDto[]>(jsonString);
 
-            throw new NotImplementedException();
+            foreach (var productDto in productDeserialize)
+            {
+                if (!IsValid(productDto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                Product newProduct = new Product()
+                {
+                    Name = productDto.Name,
+                    Price = productDto.Price,
+                    CategoryType = (CategoryType)productDto.CategoryType,
+                };
+
+                HashSet<ProductClient> productClients = new HashSet<ProductClient>();
+
+                foreach (var clientId in productDto.Clients.Distinct())
+                {
+                    if (!context.Clients.Any(c => c.Id == clientId))
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    ProductClient client = new ProductClient()
+                    {
+                        Product = newProduct,
+                        ClientId = clientId,
+                    };
+
+                    productClients.Add(client);
+
+                }
+
+                newProduct.ProductsClients = productClients;
+
+                products.Add(newProduct);
+                sb.AppendLine(string.Format(SuccessfullyImportedProducts, productDto.Name, productClients.Count()));
+
+            }
+
+            context.Products.AddRange(products);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
         }
 
         public static bool IsValid(object dto)

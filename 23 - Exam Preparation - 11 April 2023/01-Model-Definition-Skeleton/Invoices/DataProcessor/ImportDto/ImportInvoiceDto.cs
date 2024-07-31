@@ -9,8 +9,7 @@ namespace Invoices.DataProcessor.ImportDto
     public class ImportInvoiceDto
     {
         [Required]
-        [MinLength(1_000_000_000)]
-        [MaxLength(1_500_000_000)]
+        [Range(1_000_000_000, 1_500_000_000)]
         public int Number { get; set; }
 
         [Required]
@@ -23,7 +22,8 @@ namespace Invoices.DataProcessor.ImportDto
         public decimal Amount { get; set; }
 
         [Required]
-        public CurrencyType CurrencyType { get; set; }
+        [Range(0,2)]
+        public int CurrencyType { get; set; }
 
         [Required]
         public int ClientId { get; set; }
