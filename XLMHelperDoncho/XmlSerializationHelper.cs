@@ -1,9 +1,9 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Text;
 using System.Xml.Serialization;
 using System.Xml;
 
-namespace Boardgames.Helpers;
+//namespace Boardgames.Helpers;
 
 public class XmlSerializationHelper
 {
