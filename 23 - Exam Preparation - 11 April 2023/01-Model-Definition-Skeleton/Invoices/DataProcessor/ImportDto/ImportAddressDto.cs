@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Invoices.DataProcessor.ImportDto
 {
-    [XmlType(nameof(Address))]
+    [XmlType(nameof(Address))] 
     public class ImportAddressDto
     {
         [XmlElement(nameof(StreetName))]

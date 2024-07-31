@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace Boardgames.DataProcessor.ImportDto
 {
-    [XmlType(nameof(Boardgames))]
+    [XmlType(nameof(Boardgame))]
     public class ImportBoardGameDto
     {
         [XmlElement(nameof(Name))]
@@ -17,14 +17,12 @@ namespace Boardgames.DataProcessor.ImportDto
 
         [XmlElement(nameof(Rating))]
         [Required]
-        [MinLength(1)]
-        [MaxLength(10)]
+        [Range(1, 10)]
         public double Rating { get; set; }
 
         [XmlElement(nameof(YearPublished))]
         [Required]
-        [MinLength(2018)]
-        [MaxLength(2023)]
+        [Range(2018,2023)]
         public int YearPublished { get; set; }
 
         [XmlElement(nameof(CategoryType))]
@@ -33,7 +31,7 @@ namespace Boardgames.DataProcessor.ImportDto
 
         [XmlElement(nameof(Mechanics))]
         [Required]
-        public string Mechanics { get; set; }
+        public string Mechanics { get; set; } = null!;
 
     }
 }

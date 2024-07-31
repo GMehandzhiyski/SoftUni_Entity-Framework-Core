@@ -31,24 +31,24 @@
 
             PrintAndExportEntityToFile(creators, exportDir + "Actual Result - ImportCreators.txt");
 
-            var sellers =
-             DataProcessor.Deserializer.ImportSellers(context,
-                 File.ReadAllText(baseDir + "sellers.json"));
+            //var sellers =
+            // DataProcessor.Deserializer.ImportSellers(context,
+            //     File.ReadAllText(baseDir + "sellers.json"));
 
-            PrintAndExportEntityToFile(sellers, exportDir + "Actual Result - ImportSellers.txt");
+            //PrintAndExportEntityToFile(sellers, exportDir + "Actual Result - ImportSellers.txt");
         }
 
         private static void ExportEntities(BoardgamesContext context, string exportDir)
         {
-            var exportCreatorsWithTheirBoardgames = DataProcessor.Serializer.ExportCreatorsWithTheirBoardgames(context);
-            Console.WriteLine(exportCreatorsWithTheirBoardgames);
-            File.WriteAllText(exportDir + "Actual Result - ExportCreatorsWithTheirBoardgames.xml", exportCreatorsWithTheirBoardgames);
+            //var exportCreatorsWithTheirBoardgames = DataProcessor.Serializer.ExportCreatorsWithTheirBoardgames(context);
+            //Console.WriteLine(exportCreatorsWithTheirBoardgames);
+            //File.WriteAllText(exportDir + "Actual Result - ExportCreatorsWithTheirBoardgames.xml", exportCreatorsWithTheirBoardgames);
 
-            var year = 2021;
-            double rating = 9.50;
-            var exportSellersWithMostBoardgames = DataProcessor.Serializer.ExportSellersWithMostBoardgames(context, year, rating);
-            Console.WriteLine(exportSellersWithMostBoardgames);
-            File.WriteAllText(exportDir + "Actual Result - ExportSellersWithMostBoardgames.json", exportSellersWithMostBoardgames);
+            //var year = 2021;
+            //double rating = 9.50;
+            //var exportSellersWithMostBoardgames = DataProcessor.Serializer.ExportSellersWithMostBoardgames(context, year, rating);
+            //Console.WriteLine(exportSellersWithMostBoardgames);
+            //File.WriteAllText(exportDir + "Actual Result - ExportSellersWithMostBoardgames.json", exportSellersWithMostBoardgames);
         }
 
         private static void ResetDatabase(BoardgamesContext context, bool shouldDropDatabase = false)

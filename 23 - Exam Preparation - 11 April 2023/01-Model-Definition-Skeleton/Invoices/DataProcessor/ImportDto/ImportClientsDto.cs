@@ -1,4 +1,5 @@
 ﻿using Invoices.Data.Models;
+using Microsoft.Extensions.Caching.Memory;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
 
@@ -7,8 +8,7 @@ namespace Invoices.DataProcessor.ImportDto
     [XmlType("Client")]
     public class ImportClientsDto
     {
-       
-
+    
         [XmlElement(nameof(Name))]
         [Required]
         [MinLength(10)]
@@ -21,7 +21,7 @@ namespace Invoices.DataProcessor.ImportDto
         [MaxLength(15)]
         public string NumberVat { get; set; } = null!;
 
-        [XmlArray(nameof(Address))]
+        [XmlArray("Addresses")]
         public ImportAddressDto[] Address { get; set; } = null!;
     }
 }

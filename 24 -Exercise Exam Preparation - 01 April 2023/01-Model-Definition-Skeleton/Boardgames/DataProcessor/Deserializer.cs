@@ -26,7 +26,7 @@
 
             StringBuilder   sb = new StringBuilder();
 
-            List<Creator> creators = new List<Creator>();
+            HashSet<Creator> creators = new HashSet<Creator>();
 
             foreach (var creatorDto in creatorDtos)
             {

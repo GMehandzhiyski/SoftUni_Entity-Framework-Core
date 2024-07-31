@@ -7157,11 +7157,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\SoftUni_Entity-Framework-Core\\24 -Exercise Exam Preparation\\01-Model-Definition-Skeleton\\Boardgames\\Boardgames.csproj",
+      "projectUniqueName": "C:\\SoftUni_Entity-Framework-Core\\24 -Exercise Exam Preparation - 01 April 2023\\01-Model-Definition-Skeleton\\Boardgames\\Boardgames.csproj",
       "projectName": "Boardgames",
-      "projectPath": "C:\\SoftUni_Entity-Framework-Core\\24 -Exercise Exam Preparation\\01-Model-Definition-Skeleton\\Boardgames\\Boardgames.csproj",
+      "projectPath": "C:\\SoftUni_Entity-Framework-Core\\24 -Exercise Exam Preparation - 01 April 2023\\01-Model-Definition-Skeleton\\Boardgames\\Boardgames.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\SoftUni_Entity-Framework-Core\\24 -Exercise Exam Preparation\\01-Model-Definition-Skeleton\\Boardgames\\obj\\",
+      "outputPath": "C:\\SoftUni_Entity-Framework-Core\\24 -Exercise Exam Preparation - 01 April 2023\\01-Model-Definition-Skeleton\\Boardgames\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

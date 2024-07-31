@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6gXVxCQhwXF/1JhZR93nSZlsZhxuNVrN9Z5SjwxwNInKUqIZayijNFYEQT1epbUxXCMpe9WosoGzDKV8vuPFdA==",
+  "dgSpecHash": "8NZ7d5/crx65O42q4RJHX8U2LT4ZMIqu0Rb9ZkUpco58Z1URAPqogQopxbampzoNa/jWQzVvgHOR3fpGGMrCoQ==",
   "success": true,
-  "projectFilePath": "C:\\SoftUni_Entity-Framework-Core\\23 - Exam Preparation\\01-Model-Definition-Skeleton\\Invoices\\Invoices.csproj",
+  "projectFilePath": "C:\\SoftUni_Entity-Framework-Core\\23 - Exam Preparation - 11 April 2023\\01-Model-Definition-Skeleton\\Invoices\\Invoices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",

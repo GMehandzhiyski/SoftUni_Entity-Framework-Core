@@ -3,10 +3,10 @@
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
     using System.Text;
+    using Boardgames.Helpers;
     using Invoices.Data;
     using Invoices.Data.Models;
     using Invoices.DataProcessor.ImportDto;
-    using Invoices.Utilities;
     using Newtonsoft.Json;
 
     public class Deserializer
@@ -26,18 +26,13 @@
 
         public static string ImportClients(InvoicesContext context, string xmlString)
         {
-            StringBuilder sb = new StringBuilder();
-            XmlHelper xmlHelper = new XmlHelper();
+            var creatorDtos = XmlSerializationHelper
+                .Deserialize<ImportClientsDto[]>(xmlString, "Clients");
 
-            const string xmlRoot = "Clients";
+            StringBuilder sb = new();
 
-            // Valid models to import into the DB!
-           HashSet<Address> addresses = new HashSet<Address>();
-            HashSet<Client> clients  = new HashSet<Client>();
-
-            ImportClientsDto[] creatorDtos =
-                xmlHelper.Deserialize<ImportClientsDto[]>(xmlString, xmlRoot);
-
+            
+            HashSet<Client> clients = new HashSet<Client>();
 
             foreach (var dtoClient in creatorDtos)
             {
@@ -46,6 +41,8 @@
                     sb.AppendLine(ErrorMessage);
                     continue;
                 }
+
+                HashSet<Address> addresses = new HashSet<Address>();
 
                 foreach (var dtoAddress in dtoClient.Address)
                 {
