@@ -10,7 +10,7 @@ namespace Cadastre.DataProcessor.ImportDtos
     {
         [XmlAttribute(nameof(Region))]
         [Required]
-        public Region Region { get; set; }
+        public string Region { get; set; } = null!;
 
         [XmlElement(nameof(Name))]
         [Required]
