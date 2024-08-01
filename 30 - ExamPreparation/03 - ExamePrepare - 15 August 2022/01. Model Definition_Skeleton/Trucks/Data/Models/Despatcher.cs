@@ -17,7 +17,7 @@ namespace Trucks.Data.Models
         [MaxLength(40)]
         public string Name { get; set; } = null!;
 
-        public string Position { get; set; } = null!;
+        public string Position { get; set; }
 
         public virtual ICollection<Truck> Trucks  { get; set; }=null!;
 

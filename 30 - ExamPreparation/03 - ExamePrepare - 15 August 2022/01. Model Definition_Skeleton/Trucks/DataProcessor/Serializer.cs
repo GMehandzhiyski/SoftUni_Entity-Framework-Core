@@ -6,12 +6,12 @@
     {
         public static string ExportDespatchersWithTheirTrucks(TrucksContext context)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public static string ExportClientsWithMostTrucks(TrucksContext context, int capacity)
         {
-            throw new NotImplementedException();
+            return "";
         }
     }
 }

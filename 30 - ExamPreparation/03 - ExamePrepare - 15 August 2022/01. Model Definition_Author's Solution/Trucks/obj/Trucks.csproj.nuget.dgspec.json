@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Skeleton\\Trucks\\Trucks.csproj": {}
+    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Author's Solution\\Trucks\\Trucks.csproj": {}
   },
   "projects": {
-    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Skeleton\\Trucks\\Trucks.csproj": {
+    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Author's Solution\\Trucks\\Trucks.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Skeleton\\Trucks\\Trucks.csproj",
+        "projectUniqueName": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Author's Solution\\Trucks\\Trucks.csproj",
         "projectName": "Trucks",
-        "projectPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Skeleton\\Trucks\\Trucks.csproj",
+        "projectPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Author's Solution\\Trucks\\Trucks.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Skeleton\\Trucks\\obj\\",
+        "outputPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\03 - ExamePrepare - 15 August 2022\\01. Model Definition_Author's Solution\\Trucks\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,12 +54,6 @@
               "version": "[6.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.1, )"
             },
