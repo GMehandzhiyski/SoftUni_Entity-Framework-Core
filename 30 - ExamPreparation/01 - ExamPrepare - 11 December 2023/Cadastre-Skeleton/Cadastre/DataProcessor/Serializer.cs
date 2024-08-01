@@ -14,8 +14,8 @@ namespace Cadastre.DataProcessor
 
             var allProperties = dbContext.Properties
                 .Where(p => p.DateOfAcquisition >= dateConst)
-                //.OrderByDescending(p => p.DateOfAcquisition)
-                //.ThenBy(p => p.PropertyIdentifier)
+                .OrderByDescending(p => p.DateOfAcquisition)
+                .ThenBy(p => p.PropertyIdentifier)
                 .Select(p => new
                 {
                     PropertyIdentifier = p.PropertyIdentifier,
