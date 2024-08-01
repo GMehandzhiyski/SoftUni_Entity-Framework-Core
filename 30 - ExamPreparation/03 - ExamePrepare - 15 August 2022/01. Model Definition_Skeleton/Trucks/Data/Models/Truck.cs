@@ -10,18 +10,18 @@ namespace Trucks.Data.Models
         public int Id { get; set; }
 
         [MaxLength(8)]
-        public string RegistrationNumber { get; set; }
+        public string RegistrationNumber { get; set; } = null!;
 
         [Required]
         [MaxLength(17)]
-        public string VinNumber { get; set; }
+        public string VinNumber { get; set; } = null!;
 
-   
+
         [MaxLength(1420)]
-        public int TankCapacity  { get; set; }
+        public int TankCapacity { get; set; }
 
         [MaxLength(29000)]
-        public int CargoCapacity  { get; set; }
+        public int CargoCapacity { get; set; }
 
         [Required]
         public CategoryType CategoryType { get; set; }
@@ -30,9 +30,12 @@ namespace Trucks.Data.Models
         public MakeType MakeType { get; set; }
 
         [Required]
-        public int DespatcherId  { get; set; }
-        //[ForeignKey(nameof(DespatcherId))]
+        public int DespatcherId { get; set; }
+        [ForeignKey(nameof(DespatcherId))]
 
-        //Collection
+        [Required]
+        public virtual Despatcher Despatcher { get; set; } = null!;
+
+        public virtual ICollection<ClientTruck> ClientsTrucks { get; set; } = null!;
     }
 }

@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Trucks.Data.Models
 {
-    internal class Despatcher
+    public class Despatcher
     {
+        public Despatcher()
+        {
+            Trucks = new List<Truck>();
+        }
+
+        [Key]
+        public int Id { get; set; }
+
+
+        [Required]
+        [MaxLength(40)]
+        public string Name { get; set; } = null!;
+
+        public string Position { get; set; } = null!;
+
+        public virtual ICollection<Truck> Trucks  { get; set; }=null!;
+
     }
 }
