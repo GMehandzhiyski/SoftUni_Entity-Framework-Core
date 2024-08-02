@@ -8,7 +8,27 @@
     {
         public static string ExportDespatchersWithTheirTrucks(TrucksContext context)
         {
-            return "";
+            var despatcherSerialixer = context.Despatchers
+                .Where(d => d.Trucks.Any())
+                .OrderByDescending(t => t.Trucks.Count())
+                .ThenBy(d => d.Name)
+                .Select(d => new ExportDespatcherXlmDto()
+                {
+                    TrucksCount = d.Trucks.Count(),
+                    DespatcherName = d.Name,
+                    Trucks = d.Trucks
+                        .OrderBy(t => t.RegistrationNumber)
+                        .Select(t => new ExportTruckXmlDto()
+                        {
+                            RegistrationNumber = t.RegistrationNumber,  
+                            Make = t.MakeType.ToString(),
+                        })
+                        .ToArray()
+
+                })
+                .ToArray();
+
+            return XmlSerializationHelper.Serialize(despatcherSerialixer, "Despatchers");
         }
 
         public static string ExportClientsWithMostTrucks(TrucksContext context, int capacity)
@@ -21,7 +41,8 @@
                     Name = c.Name,
                     Trucks = c.ClientsTrucks
                         .Where(ct => ct.Truck.TankCapacity >= capacity)
-                        .ToArray()
+                        .OrderBy(c => c.Truck.MakeType)
+                        .ThenByDescending(c => c.Truck.CargoCapacity)
                         .Select(ct => new ExportTruckDto()
                         { 
                             TruckRegistrationNumber = ct.Truck.RegistrationNumber,
@@ -32,8 +53,6 @@
                             MakeType = ct.Truck.MakeType.ToString(),
                         
                         })
-                        .OrderBy(c => c.MakeType.ToString())
-                        .ThenByDescending(c => c.CargoCapacity)
                         .ToArray()
                 
                 })
