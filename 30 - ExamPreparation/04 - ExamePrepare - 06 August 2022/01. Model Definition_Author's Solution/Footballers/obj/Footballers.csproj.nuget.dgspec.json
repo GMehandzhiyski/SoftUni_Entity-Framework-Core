@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Skeleton\\Footballers\\Footballers.csproj": {}
+    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Author's Solution\\Footballers\\Footballers.csproj": {}
   },
   "projects": {
-    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Skeleton\\Footballers\\Footballers.csproj": {
+    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Author's Solution\\Footballers\\Footballers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Skeleton\\Footballers\\Footballers.csproj",
+        "projectUniqueName": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Author's Solution\\Footballers\\Footballers.csproj",
         "projectName": "Footballers",
-        "projectPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Skeleton\\Footballers\\Footballers.csproj",
+        "projectPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Author's Solution\\Footballers\\Footballers.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Skeleton\\Footballers\\obj\\",
+        "outputPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\04 - ExamePrepare - 06 August 2022\\01. Model Definition_Author's Solution\\Footballers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,12 +54,6 @@
               "version": "[6.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.1, )"
             },

@@ -1,17 +1,22 @@
 ﻿namespace Footballers.DataProcessor
 {
     using Data;
+    using System.Text;
 
     public class Serializer
     {
         public static string ExportCoachesWithTheirFootballers(FootballersContext context)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+
+            return sb.ToString().TrimEnd();
         }
 
         public static string ExportTeamsWithMostFootballers(FootballersContext context, DateTime date)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
