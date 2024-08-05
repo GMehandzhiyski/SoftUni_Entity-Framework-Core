@@ -5,6 +5,11 @@ namespace TravelAgency.Data.Models
 {
     public class Guide
     {
+        public Guide()
+        {
+            TourPackagesGuides = new HashSet<TourPackageGuide>();
+        }
+
         [Key]
         public int Id { get; set; }
 

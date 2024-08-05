@@ -24,7 +24,7 @@ namespace TravelAgency.Data.Models
         public string Email { get; set; } = null!;
 
         [Required]
-        [MaxLength(30)]
+        [MaxLength(13)]
         public  string PhoneNumber { get; set; } = null!;
 
         public virtual ICollection<Booking> Bookings { get; set; } = null!;
