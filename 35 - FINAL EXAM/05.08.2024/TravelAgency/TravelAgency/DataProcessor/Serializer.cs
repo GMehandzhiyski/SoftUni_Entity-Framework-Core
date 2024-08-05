@@ -23,6 +23,8 @@ namespace TravelAgency.DataProcessor
                         Price = g.TourPackage.Price,
                     
                     })
+                    .OrderByDescending(g => g.Price)
+                    .ThenBy(g => g.Name)
                     .ToArray()
                 })
                 .ToArray();

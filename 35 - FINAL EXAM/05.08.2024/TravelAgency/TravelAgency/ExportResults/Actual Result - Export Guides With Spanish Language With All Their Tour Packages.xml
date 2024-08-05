@@ -9,14 +9,14 @@
         <Price>199.99</Price>
       </TourPackage>
       <TourPackage>
-        <Name>City Tour</Name>
-        <Description>Discover the charm of the city with a guided tour. Visit famous landmarks, bustling markets, and hidden gems. Perfect for all ages. Duration: 3 hours.</Description>
-        <Price>129.99</Price>
-      </TourPackage>
-      <TourPackage>
         <Name>Historical Sites</Name>
         <Description>Explore ancient ruins, museums, and landmarks on a guided tour. Learn about the rich history and culture of the area. Ideal for history buffs. Duration: 4 hours.</Description>
         <Price>159.99</Price>
+      </TourPackage>
+      <TourPackage>
+        <Name>City Tour</Name>
+        <Description>Discover the charm of the city with a guided tour. Visit famous landmarks, bustling markets, and hidden gems. Perfect for all ages. Duration: 3 hours.</Description>
+        <Price>129.99</Price>
       </TourPackage>
     </TourPackages>
   </Guide>
