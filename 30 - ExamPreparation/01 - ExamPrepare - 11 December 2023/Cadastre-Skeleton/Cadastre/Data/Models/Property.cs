@@ -6,6 +6,11 @@ namespace Cadastre.Data.Models
 {
     public class Property
     {
+        public Property()
+        {
+            PropertiesCitizens = new HashSet<PropertyCitizen>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -37,6 +42,6 @@ namespace Cadastre.Data.Models
         [Required]
         public District District { get; set; } = null!;
 
-        //colection
+        public virtual ICollection<PropertyCitizen> PropertiesCitizens  { set; get; } = null!;
     }
 }

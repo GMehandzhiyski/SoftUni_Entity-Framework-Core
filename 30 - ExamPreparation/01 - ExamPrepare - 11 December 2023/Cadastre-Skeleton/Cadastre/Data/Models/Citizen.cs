@@ -5,6 +5,11 @@ namespace Cadastre.Data.Models
 {
     public class Citizen
     {
+        public Citizen()
+        {
+            PropertiesCitizens = new HashSet<PropertyCitizen>(); 
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -19,11 +24,11 @@ namespace Cadastre.Data.Models
         public string LastName { get; set; } = null!;
 
         [Required]
-        public DateTime DateTime { get; set; }
+        public DateTime BirthDate  { get; set; }
 
         [Required]
         public MaritalStatus MaritalStatus { get; set; }
 
-        //colection
+        public virtual ICollection<PropertyCitizen> PropertiesCitizens { get; set; } = null!;
     }
 }
