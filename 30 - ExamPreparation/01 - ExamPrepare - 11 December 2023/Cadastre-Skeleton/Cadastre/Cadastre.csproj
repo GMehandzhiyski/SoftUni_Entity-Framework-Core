@@ -24,4 +24,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataProcessor\ExportDtos\" />
+    <Folder Include="DataProcessor\ImportDtos\" />
+  </ItemGroup>
+
 </Project>

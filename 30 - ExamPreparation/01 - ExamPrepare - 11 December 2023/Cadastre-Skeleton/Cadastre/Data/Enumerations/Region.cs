@@ -2,7 +2,7 @@
 {
     public enum Region
     {
-        SouthEast,
+        SouthEast = 0,
         SouthWest,
         NorthEast,
         NorthWest

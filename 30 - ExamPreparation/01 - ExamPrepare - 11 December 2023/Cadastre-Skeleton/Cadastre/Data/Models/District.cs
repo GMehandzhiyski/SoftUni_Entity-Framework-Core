@@ -5,16 +5,11 @@ namespace Cadastre.Data.Models
 {
     public class District
     {
-        public District()
-        {
-            Properties = new HashSet<Property>();
-        }
-
-
         [Key]
         public int Id { get; set; }
 
         [Required]
+        [MinLength(2)]
         [MaxLength(80)]
         public string Name { get; set; } = null!;
 
@@ -23,9 +18,8 @@ namespace Cadastre.Data.Models
         public string PostalCode { get; set; } = null!;
 
         [Required]
-        public Region Region { get; set; }
+        public Region Region { get; set; } 
 
-        public ICollection<Property> Properties { get; set; }
-
+        //colection
     }
 }
