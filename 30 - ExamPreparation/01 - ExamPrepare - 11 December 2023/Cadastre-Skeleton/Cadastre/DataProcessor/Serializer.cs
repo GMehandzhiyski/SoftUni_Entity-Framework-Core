@@ -6,6 +6,8 @@ namespace Cadastre.DataProcessor
     {
         public static string ExportPropertiesWithOwners(CadastreContext dbContext)
         {
+
+
             return"";
         }
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RuhUkJG9KBLiDqlSvjKzVQqVe3JdWyqP39V2I09H+/1HxtW+qcIr+M0O1bedXuDhOPoUXUGXTqmXDjCEHI6PVA==",
+  "dgSpecHash": "sxbZVekfiWuldUFupZuJw9Eagz1w8ZJIoXBQXohixy0Hnj7XPf67ce/xbwIL+bzQ24nf/mtwmH4qV5DBhq3y5w==",
   "success": true,
-  "projectFilePath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj",
+  "projectFilePath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Old\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",

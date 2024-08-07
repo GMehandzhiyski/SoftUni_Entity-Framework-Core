@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj": {}
+    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Old\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj": {}
   },
   "projects": {
-    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj": {
+    "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Old\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj",
+        "projectUniqueName": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Old\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj",
         "projectName": "Cadastre",
-        "projectPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj",
+        "projectPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Old\\Cadastre-Skeleton\\Cadastre\\Cadastre.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Cadastre-Skeleton\\Cadastre\\obj\\",
+        "outputPath": "C:\\SoftUni_Entity-Framework-Core\\30 - ExamPreparation\\01 - ExamPrepare - 11 December 2023\\Old\\Cadastre-Skeleton\\Cadastre\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
