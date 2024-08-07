@@ -41,7 +41,20 @@ namespace Cadastre.DataProcessor
 
         public static string ExportFilteredPropertiesWithDistrict(CadastreContext dbContext)
         {
-            return "";
+            var allProperties = dbContext.Properties
+                .Where(p => p.Area >= 100)
+                .OrderByDescending(p => p.Area)
+                .ThenBy(p => p.DateOfAcquisition)
+                .Select(p => new ExportPropertirsXmlDto 
+                {
+                    PostalCode = p.District.PostalCode,
+                    PropertyIdentifier = p.PropertyIdentifier,
+                    Area = p.Area,
+                    DateOfAcquisition = p.DateOfAcquisition.ToString("dd/MM/yyyy"),
+                })
+                .ToArray ();
+
+            return XmlSerializationHelper.Serialize(allProperties, "Properties");
         }
     }
 }
