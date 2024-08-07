@@ -11,6 +11,6 @@ namespace Cadastre.DataProcessor.ExportDtos
         public string LastName { get; set; } = null!;
 
         [Required]
-        public string MaritalStatus { get; set; }
+        public string MaritalStatus { get; set; } = null!;
     }
 }
