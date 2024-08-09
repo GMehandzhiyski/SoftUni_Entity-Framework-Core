@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetPay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de5dbbb2a07dd7c15f92bbb31a6764853886ac1c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc3ffe4562940707319655ecc4a130a142eb8d25")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetPay")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetPay")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
