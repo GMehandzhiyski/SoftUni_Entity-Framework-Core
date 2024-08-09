@@ -9,29 +9,30 @@ namespace Medicines.DataProcessor.ImportDtos
     {
         [XmlAttribute("category")]
         [Required]
-        [Range(0,4)]
+        [Range(0, 4)]
         public string Category { get; set; } = null!;
 
-        [XmlElement(nameof(Name))]
+        [XmlElement("Name")]
         [Required]
         [MinLength(3)]
         [MaxLength(150)]
-        public string Name { get; set; } = null!;
+        public string NameM { get; set; } = null!;
 
-        [XmlElement(nameof(Price))]
+        [XmlElement("Price")]
         [Required]
-        [Range(0.01,1000.00)]
-        public double Price { get; set; }
+        //[MaxLength(1000)]
+        [Range(0.01,1000)]
+        public decimal Price { get; set; }
 
-        [XmlElement(nameof(ProductionDate))]
+        [XmlElement("ProductionDate")]
         [Required]
         public string ProductionDate { get; set; } = null!;
 
-        [XmlElement(nameof(ExpiryDate))]
+        [XmlElement("ExpiryDate")]
         [Required]
         public string ExpiryDate { get; set; } = null!;
 
-        [XmlElement(nameof(Producer))]
+        [XmlElement("Producer")]
         [Required]
         [MinLength(3)]
         [MaxLength(100)]

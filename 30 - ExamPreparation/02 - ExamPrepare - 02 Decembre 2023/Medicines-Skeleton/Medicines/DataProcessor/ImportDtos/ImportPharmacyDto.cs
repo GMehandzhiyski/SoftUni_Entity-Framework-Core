@@ -8,24 +8,23 @@ namespace Medicines.DataProcessor.ImportDtos
     {
         [XmlAttribute("non-stop")]
         [Required]
-        [RegularExpression(@"^(true|false)$")]
+       [RegularExpression(@"^(true|false)$")]
         public string IsNonStop { get; set; } = null!;
 
-        [XmlElement(nameof(Name))]
+        [XmlElement("Name")]
         [Required]
         [MinLength(2)]
         [MaxLength(50)]
         public string Name { get; set; } = null!;
 
-        [XmlElement(nameof(PhoneNumber))]
+        [XmlElement("PhoneNumber")]
         [Required]
         [MaxLength(14)]
         [RegularExpression(@"^\(\d{3}\) \d{3}-\d{4}$")]
         public string PhoneNumber { get; set; } = null!;
 
-        [XmlArray("Medicines")]
-        public ImportMedicineDto[] Medicines { get; set; }
 
-      
+        [XmlArray("Medicines")]
+        public ImportMedicineDto[] Medicines { get; set; } = null!; 
     }
 }

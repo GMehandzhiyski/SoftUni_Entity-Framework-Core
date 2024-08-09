@@ -7,13 +7,14 @@ namespace Medicines.Data.Models
     {
         public Patient()
         {
-            PatientsMedicines = new List<PatientMedicine>();
+            PatientsMedicines = new HashSet<PatientMedicine>();
         }
 
         [Key]
         public int Id { get; set; }
 
         [Required]
+        [MinLength(5)]
         [MaxLength(100)]
         public string FullName { get; set; } = null!;
 
@@ -23,7 +24,8 @@ namespace Medicines.Data.Models
         [Required]
         public Gender Gender { get; set; }
 
-        [Required]
-        public virtual ICollection<PatientMedicine> PatientsMedicines { get; set; } = null!;
+        public virtual ICollection<PatientMedicine> PatientsMedicines  { get; set; }
+
+
     }
 }

@@ -12,13 +12,13 @@ namespace Medicines.Data.Models
         [Required]
         public Patient Patient { get; set; } = null!;
 
-
         [Required]
-        public int MedicineId { get; set; }
+        public int MedicineId  { get; set;}
         [ForeignKey(nameof(MedicineId))]
 
         [Required]
-        public virtual Medicine Medicine { get; set; } = null!;
+        public Medicine Medicine { get; set; } = null!;
+
 
     }
 }

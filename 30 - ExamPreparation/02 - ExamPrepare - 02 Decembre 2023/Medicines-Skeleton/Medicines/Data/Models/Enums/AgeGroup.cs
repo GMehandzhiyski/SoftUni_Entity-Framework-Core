@@ -2,7 +2,7 @@
 {
     public enum AgeGroup
     {
-        Child,
+        Child = 0,
         Adult,
         Senior
     }

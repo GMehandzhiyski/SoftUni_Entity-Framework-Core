@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Principal;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Medicines.Data.Models
 {
@@ -8,24 +6,25 @@ namespace Medicines.Data.Models
     {
         public Pharmacy()
         {
-            Medicines = new List<Medicine>();    
+            Medicines = new HashSet<Medicine>();
         }
 
         [Key]
         public int Id { get; set; }
 
         [Required]
+        [MinLength(2)]
         [MaxLength(50)]
         public string Name { get; set; } = null!;
 
         [Required]
         [MaxLength(14)]
+        //[RegularExpression]
         public string PhoneNumber { get; set; } = null!;
 
         [Required]
-        public  bool IsNonStop { get; set; }
+        public bool IsNonStop  { get; set; }
 
-        [Required]
-        public virtual ICollection<Medicine> Medicines { get; set; } = null!;
+        public virtual ICollection<Medicine> Medicines { get; set; }
     }
 }

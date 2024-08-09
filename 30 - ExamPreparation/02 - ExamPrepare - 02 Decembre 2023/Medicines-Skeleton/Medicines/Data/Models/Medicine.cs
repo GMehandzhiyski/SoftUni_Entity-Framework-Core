@@ -1,5 +1,4 @@
 ﻿using Medicines.Data.Models.Enums;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,17 +8,20 @@ namespace Medicines.Data.Models
     {
         public Medicine()
         {
-            PatientsMedicines = new List<PatientMedicine>();
+            PatientsMedicines = new HashSet<PatientMedicine>();
         }
+
         [Key]
         public int Id { get; set; }
 
         [Required]
+        [MinLength(3)]
         [MaxLength(150)]
         public string Name { get; set; } = null!;
 
         [Required]
         [MaxLength(1000)]
+        //[Range(0,1000)]
         public decimal Price { get; set; }
 
         [Required]
@@ -32,19 +34,17 @@ namespace Medicines.Data.Models
         public DateTime ExpiryDate  { get; set; }
 
         [Required]
+        [MinLength(3)]
         [MaxLength(100)]
         public string Producer { get; set; } = null!;
 
         [Required]
         public int PharmacyId  { get; set; }
         [ForeignKey(nameof(PharmacyId))]
-
         [Required]
-        public virtual Pharmacy Pharmacy { get; set; } = null!;
+        public virtual Pharmacy Pharmacy { get; set; } =null!;
 
-        [Required]
-        public virtual ICollection<PatientMedicine> PatientsMedicines { get; set; } = null!;
-
+        public virtual ICollection<PatientMedicine> PatientsMedicines { get; set; }
 
     }
 }

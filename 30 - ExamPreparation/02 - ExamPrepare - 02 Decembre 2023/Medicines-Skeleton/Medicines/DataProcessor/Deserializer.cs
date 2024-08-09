@@ -19,12 +19,12 @@
         {
             StringBuilder sb = new StringBuilder();
 
-            var patientsDeserializer = JsonConvert
-                .DeserializeObject<ImportPacientsJsonDto[]>(jsonString);
+            var patirntDeserialeze = JsonConvert
+                .DeserializeObject<ImportPatientsDto[]>(jsonString);
 
-            HashSet<Patient> patients = new HashSet<Patient>();
+            HashSet<Patient> patirnts = new HashSet<Patient>();
 
-            foreach (var patientDto in patientsDeserializer)
+            foreach (var patientDto in patirntDeserialeze)
             {
                 if (!IsValid(patientDto))
                 {
@@ -34,51 +34,54 @@
 
                 Patient newPatient = new Patient()
                 { 
-                    FullName = patientDto.FullName, 
-                    AgeGroup = (AgeGroup)patientDto.AgeGroup,
-                    Gender = (Gender)patientDto.Gender,
+                    FullName = patientDto.FullName,
+                    AgeGroup = (AgeGroup)Enum.Parse(typeof(AgeGroup), patientDto.AgeGroup),
+                    Gender = (Gender)Enum.Parse(typeof(Gender),patientDto.Gender),
                 };
+
+
 
                 foreach (var medicineDto in patientDto.Medicines)
                 {
                     if (!IsValid(medicineDto))
                     { 
-                        sb.AppendLine(ErrorMessage);
-                        continue; 
-                    };
+                         sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
 
-                    if (newPatient.PatientsMedicines.Any(m => m.MedicineId == medicineDto))
+
+                    if (newPatient.PatientsMedicines.FirstOrDefault(m => m.MedicineId == medicineDto) != null)
                     {
                         sb.AppendLine(ErrorMessage);
                         continue;
-                    };
+                    }
 
-                    PatientMedicine newPatientMedicine = new PatientMedicine() 
+                    PatientMedicine newPatientMedicine = new PatientMedicine()
                     {
                         Patient = newPatient,
                         MedicineId = medicineDto
                     };
 
+
                     newPatient.PatientsMedicines.Add(newPatientMedicine);
                 }
 
-                patients.Add(newPatient);
+                patirnts.Add(newPatient);
                 sb.AppendLine(string.Format(SuccessfullyImportedPatient, newPatient.FullName, newPatient.PatientsMedicines.Count()));
             }
 
-            context.Patients.AddRange(patients);    
+            context.Patients.AddRange(patirnts);
             context.SaveChanges();
-
             return sb.ToString().TrimEnd();
         }
 
         public static string ImportPharmacies(MedicinesContext context, string xmlString)
         {
-            StringBuilder sb = new StringBuilder();
+           StringBuilder sb = new StringBuilder();
 
             var pharmaciesDeserialize = XmlSerializationHelper
                 .Deserialize<ImportPharmacyDto[]>(xmlString, "Pharmacies");
-
+            
             HashSet<Pharmacy> pharmacies = new HashSet<Pharmacy>();
 
             foreach (var pharmacyDto in pharmaciesDeserialize)
@@ -88,84 +91,93 @@
                     sb.AppendLine(ErrorMessage);
                     continue;
                 }
-                
+
+                //if (!(pharmacyDto.IsNonStop == "true"
+                //    || pharmacyDto.IsNonStop == "false"))
+                //{
+                //    sb.AppendLine(ErrorMessage);
+                //    continue;
+                //}
+
+
                 Pharmacy newPharmacy = new Pharmacy()
-                { 
+                {
                     IsNonStop = bool.Parse(pharmacyDto.IsNonStop),
-                    Name = pharmacyDto.Name,
+                    Name = pharmacyDto.Name,    
                     PhoneNumber = pharmacyDto.PhoneNumber,
                 };
 
-               // HashSet<Medicine> medicines = new HashSet<Medicine>();
+
                 foreach (var medicineDto in pharmacyDto.Medicines)
                 {
+
                     if (!IsValid(medicineDto))
                     {
                         sb.AppendLine(ErrorMessage);
                         continue;
                     }
 
-                    //DateTime dateTimeProductionDate = DateTime
-                    //    .ParseExact(medicineDto.ProductionDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    DateTime productionDateDateTime;
+                    bool isproductionDate = DateTime
+                        .TryParseExact(medicineDto.ProductionDate, "yyyy-MM-dd",
+                        CultureInfo.InvariantCulture,
+                        DateTimeStyles.None,
+                        out productionDateDateTime);
 
-                   DateTime dateTimeProductionDate;
-                    bool isProductionDateValid = DateTime
-                        .TryParseExact(medicineDto.ProductionDate, "yyyy-MM-dd", CultureInfo
-                        .InvariantCulture, DateTimeStyles.None, out dateTimeProductionDate);
+                    DateTime expiryDateDateTime;
+                    bool isExpiryDate = DateTime
+                        .TryParseExact(medicineDto.ExpiryDate, "yyyy-MM-dd",
+                        CultureInfo.InvariantCulture,
+                        DateTimeStyles.None,
+                        out expiryDateDateTime);
 
-                    if (!isProductionDateValid)
-                    {
-                        sb.Append(ErrorMessage);
-                        continue;
-                    }
-
-                  
-                    DateTime dateTimeExpiryDate;
-                    bool isExpityDateValid = DateTime
-                        .TryParseExact(medicineDto.ExpiryDate, "yyyy-MM-dd", CultureInfo
-                        .InvariantCulture, DateTimeStyles.None, out dateTimeExpiryDate);
-
-                    if (!isExpityDateValid)
-                    {
-                        sb.Append(ErrorMessage);
-                        continue;
-                    }
-
-                    if (dateTimeProductionDate >= dateTimeExpiryDate)
+                    if (!(isproductionDate))
                     {
                         sb.AppendLine(ErrorMessage);
                         continue;
                     }
 
-                    if (newPharmacy.Medicines.Any(x => x.Name == medicineDto.Name 
-                                                       && x.Producer == medicineDto.Producer))
+                    if (!(isExpiryDate))
                     {
                         sb.AppendLine(ErrorMessage);
                         continue;
                     }
-                 
+
+                    if (productionDateDateTime >= expiryDateDateTime)
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+
+                    // 1 & 1
+                    //if (((newPharmacy.Any(m => m.Medicines.FirstOrDefault(n => n.Name == medicineDto.Name) != null))
+                    //    && (pharmacies.Any(m => m.Medicines.FirstOrDefault(n => n.Producer == medicineDto.Producer) != null))))
+                    if(newPharmacy.Medicines.Any(n => n.Name == medicineDto.NameM 
+                                                   && n.Producer == medicineDto.Producer))
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
 
                     Medicine newMedicine = new Medicine()
                     {
                         Category = (Category)Enum.Parse(typeof(Category),medicineDto.Category),
-                        Name = medicineDto.Name,
-                        Price = (decimal)(medicineDto.Price),
-                        ProductionDate = dateTimeProductionDate,
-                        ExpiryDate = dateTimeExpiryDate,
+                        Name = medicineDto.NameM,
+                        Price = medicineDto.Price,
+                        ProductionDate = productionDateDateTime,
+                        ExpiryDate = expiryDateDateTime,
                         Producer = medicineDto.Producer,
                     };
 
-                   
                     newPharmacy.Medicines.Add(newMedicine);
+                    
                 }
 
-                
-
                 pharmacies.Add(newPharmacy);
-                sb.AppendLine(string
-                   .Format(SuccessfullyImportedPharmacy,
-                                    newPharmacy.Name,
-                                    newPharmacy.Medicines.Count()));
+                sb.AppendLine(String.Format(SuccessfullyImportedPharmacy,
+                                                newPharmacy.Name,
+                                                newPharmacy.Medicines.Count()));
             }
 
             context.Pharmacies.AddRange(pharmacies);

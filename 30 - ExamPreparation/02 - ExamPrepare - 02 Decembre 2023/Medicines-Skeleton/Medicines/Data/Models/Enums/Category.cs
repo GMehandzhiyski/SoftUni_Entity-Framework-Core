@@ -5,7 +5,7 @@
         Analgesic,
         Antibiotic,
         Antiseptic,
-        Sedative,
+        Sedative, 
         Vaccine
     }
 }

@@ -8,9 +8,10 @@
         {
         }
 
+
         public DbSet<Medicine> Medicines { get; set; } = null!;
 
-        public DbSet<Patient> Patients { get; set; } = null!;
+        public DbSet<Patient> Patients { get; set; } = null!;   
 
         public DbSet<PatientMedicine> PatientsMedicines { get; set; } = null!;
 
@@ -32,12 +33,8 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PatientMedicine>(c =>
-              c.HasKey(pm => new
-              {
-                  pm.PatientId,
-                  pm.MedicineId
-              }));
+            modelBuilder.Entity<PatientMedicine>()
+                  .HasKey(p => new { p.PatientId, p.MedicineId});
         }
     }
 }
