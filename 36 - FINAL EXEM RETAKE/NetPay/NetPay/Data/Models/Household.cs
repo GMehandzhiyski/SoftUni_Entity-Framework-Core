@@ -14,13 +14,13 @@ namespace NetPay.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [MinLength(5)]
+       // [MinLength(5)]
         [MaxLength(50)]
         public string ContactPerson { get; set; } = null!;
 
-        [MinLength(6)]
+        //[MinLength(6)]
         [MaxLength(80)]
-        public string Email { get; set; } = null!;
+        public string? Email { get; set; }
 
         [Required]
         [MaxLength(15)]

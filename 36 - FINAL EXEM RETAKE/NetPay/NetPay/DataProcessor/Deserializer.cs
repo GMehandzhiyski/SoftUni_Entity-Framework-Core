@@ -1,5 +1,8 @@
 ﻿using NetPay.Data;
+using NetPay.Data.Models;
+using NetPay.DataProcessor.ImportDtos;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace NetPay.DataProcessor
 {
@@ -12,12 +15,60 @@ namespace NetPay.DataProcessor
 
         public static string ImportHouseholds(NetPayContext context, string xmlString)
         {
-            throw new NotImplementedException();
+           StringBuilder sb = new StringBuilder();
+
+            var householdsDeserializer = XmlSerializationHelper
+                .Deserialize<ImportHouseHoldXmlDto[]>(xmlString, "Households");
+
+            HashSet<Household> houses = new HashSet<Household>();   
+
+            foreach (var houseDto in householdsDeserializer)
+            {
+                if (!IsValid(houseDto))
+                { 
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                if (houses.FirstOrDefault(n => n.ContactPerson == houseDto.ContactPerson) != null)
+                {
+                    sb.AppendLine(DuplicationDataMessage);
+                    continue;
+                }
+
+                if (houses.FirstOrDefault(n => n.Email == houseDto.Email) != null)
+                {
+                    sb.AppendLine(DuplicationDataMessage);
+                    continue;
+                }
+
+                if (houses.FirstOrDefault(n => n.PhoneNumber == houseDto.PhoneNumber) != null)
+                {
+                    sb.AppendLine(DuplicationDataMessage);
+                    continue;
+                }
+
+                Household newHouseHold = new Household()
+                {
+                    PhoneNumber = houseDto.PhoneNumber,
+                    ContactPerson = houseDto.ContactPerson,
+                    Email = houseDto.Email,
+                
+                };   
+
+                houses.Add(newHouseHold);
+                sb.AppendLine(string.Format(SuccessfullyImportedHousehold, newHouseHold.ContactPerson));
+            }
+
+            context.Households.AddRange(houses);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
         }
 
         public static string ImportExpenses(NetPayContext context, string jsonString)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public static bool IsValid(object dto)

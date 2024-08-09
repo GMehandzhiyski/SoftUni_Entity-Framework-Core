@@ -6,12 +6,12 @@ namespace NetPay.DataProcessor
     {
         public static string ExportHouseholdsWhichHaveExpensesToPay(NetPayContext context)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public static string ExportAllServicesWithSuppliers(NetPayContext context)
         {
-            throw new NotImplementedException();
+            return "";
         }
     }
 }
