@@ -63,6 +63,8 @@ public class XmlSerializationHelper
         if (string.IsNullOrEmpty(rootName))
             throw new ArgumentNullException(nameof(rootName), "Root name cannot be null or empty.");
 
+
+
         try
         {
             XmlRootAttribute xmlRoot = new(rootName);
@@ -74,7 +76,8 @@ public class XmlSerializationHelper
             XmlWriterSettings settings = new()
             {
                 OmitXmlDeclaration = omitXmlDeclaration,
-                Indent = true
+                Indent = true,
+               // IndentChars = "        " // 4 spaces for indentation
             };
 
             StringBuilder sb = new();
@@ -90,5 +93,44 @@ public class XmlSerializationHelper
             throw new InvalidOperationException($"Serializing {typeof(T)} failed.", ex);
         }
     }
+
+
+    //public static string Serialize<T>(T obj, string rootName, bool omitXmlDeclaration = false)
+    //{
+    //    if (obj == null)
+    //        throw new ArgumentNullException(nameof(obj), "Object to serialize cannot be null.");
+
+    //    if (string.IsNullOrEmpty(rootName))
+    //        throw new ArgumentNullException(nameof(rootName), "Root name cannot be null or empty.");
+
+    //    try
+    //    {
+    //        XmlRootAttribute xmlRoot = new(rootName);
+    //        XmlSerializer xmlSerializer = new(typeof(T), xmlRoot);
+
+    //        XmlSerializerNamespaces namespaces = new();
+    //        namespaces.Add(string.Empty, string.Empty);
+
+    //        XmlWriterSettings settings = new()
+    //        {
+    //            OmitXmlDeclaration = omitXmlDeclaration,
+    //            Indent = true,
+    //            IndentChars = "    " // 4 spaces for indentation
+    //        };
+
+    //        StringBuilder sb = new();
+    //        using var stringWriter = new StringWriter(sb);
+    //        using var xmlWriter = XmlWriter.Create(stringWriter, settings);
+
+    //        xmlSerializer.Serialize(xmlWriter, obj, namespaces);
+    //        return sb.ToString().TrimEnd();
+    //    }
+    //    catch (InvalidOperationException ex)
+    //    {
+    //        Debug.WriteLine($"Serialization error: {ex.Message}");
+    //        throw new InvalidOperationException($"Serializing {typeof(T)} failed.", ex);
+    //    }
+    //}
+
 }
 
